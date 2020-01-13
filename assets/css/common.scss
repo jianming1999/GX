@@ -1,0 +1,233 @@
+/* 公共样式区 */
+*, ::after, ::before {
+  box-sizing: border-box;
+  padding:0; margin: 0;
+}
+html, body { height: 100%;}
+body {color: #fff; background: url('/img/bg.jpg') no-repeat #0d0119; font: 12px/24px "微软雅黑";}
+.clearfix:after{display: block;clear : both;content : "";visibility : hidden;height : 0;}
+.clearfix{zoom : 1;}
+::-moz-placeholder { color: #98ABB1; font-size: 12px;}
+::-webkit-input-placeholder { color: #98ABB1; font-size: 12px;}
+:-ms-input-placeholder { color: #98ABB1; font-size: 12px;}
+a {color: #131212; text-decoration: none;}
+a:hover {color: #fbb710;}
+.setCursor {cursor: pointer;}
+img { border: 0;}
+input { outline: none}
+i,em { font-style: normal;}
+li { list-style: none;}
+.marB10 { margin-bottom: 10px !important;}
+.marR10 { margin-right: 10px !important;}
+.com_left { float: left !important;}
+.com_right { float: right !important;}
+.w140px { width: 140px !important;}
+.wrap {
+  position: relative;
+  z-index: 1;
+  .container {
+    padding: 1%;
+    position: relative;
+  }
+}
+
+// 输入框组件样式重置
+.el-input__inner {
+  background: transparent;
+  border-color: #0052f5 !important;
+  color: #4fd9fc;
+  line-height: 28px;
+  height: 28px;
+}
+.el-input__icon {
+  line-height: 28px;
+}
+.el-cascader {
+  line-height: 28px;
+}
+.el-popper {
+  color: #fff;
+  background: rgba(6,18,63,.9);
+  border-color:  #0052f5;
+  .popper__arrow {
+    border-bottom-color: #0052f5 !important;
+    &::after {
+      border-bottom-color: #0052f5 !important;
+    }
+  }
+}
+.el-cascader-menu{
+  border-color:  #0052f5;
+  color: #fff;
+}
+.el-range-editor {
+  &.el-input__inner {
+    width: 270px;
+  }
+  .el-range-input {
+    background: transparent;
+    color: #4fd9fc;
+  }
+  .el-range__close-icon,
+  .el-range__icon {
+    line-height: 22px;
+  }
+}
+.el-cascader-node.in-active-path,
+.el-cascader-node.is-active,
+.el-cascader-node.is-selectable.in-checked-path {
+  color: #4fd9fc;
+}
+.el-cascader-node:not(.is-disabled):focus {
+  background: transparent;
+}
+.el-cascader-node:not(.is-disabled):hover {
+  background: rgba(255,255,255,.1);
+}
+.el-button {
+  padding: 7px 15px;
+  cursor: pointer;
+}
+.el-picker-panel__icon-btn {
+  color: #fff;
+}
+.el-date-table {
+  th {
+    color: #fff;
+    border-color:  #0052f5;
+  }
+}
+.el-year-table {
+  td {
+    .cell {
+      color: #fff;
+    }
+  }
+}
+.el-date-range-picker__content {
+  color: #fff;
+  &.is-left{
+    border-color:  #0052f5;
+  }
+  .in-range {
+    color: #0052f5;
+  }
+}
+.el-date-picker__header-label {
+  color: #fff;
+}
+.el-date-picker__header--bordered {
+  border-color:  #0052f5;
+}
+
+.el-select-dropdown__item {
+  color: #fff;
+  &.hover,
+  &:hover {
+    background: rgba(255,255,255,.1);
+  }
+  &.selected {
+    color: #4fd9fc;
+  }
+}
+
+.el-date-editor {
+  .el-range-separator {
+    line-height: 22px;
+    color: #fff;
+  }
+}
+
+// 搜索框处理
+.com_more_pop_header_box {
+  .title {
+    color: #4fd9fc;
+    float: left;
+    line-height: 28px;
+    height: 28px;
+    margin-right: 10px;
+    font-size: 18px;
+  }
+  .area {
+    width: 200px;
+  }
+}
+
+.com_more_pop_body_box {
+  position: relative;
+  color: #fff;
+}
+
+/* 弹框 */
+.el-dialog {
+  background: #002369;
+  border: 1px solid #12c0ff;
+  .el-dialog__header {
+    border-bottom: 1px solid #116dbe;
+    padding: 10px 20px;
+    background: #173a81;
+    .el-dialog__title {
+      color: #12c0ff;
+      line-height: 24px;
+      font-size: 22px;
+      position: relative;
+      padding-left: 18px;
+    }
+    .dot {
+      background: #00ebff;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      margin-top: -5px;
+    }
+    .el-dialog__headerbtn {
+      width: 40px;
+      height: 40px;
+      top: 6px;
+      right: 6px;
+      .el-dialog__close {
+        color: #12c0ff;
+      }
+      &:hover {
+        border-color: #12c0ff;
+        .el-dialog__close {
+          color: #12c0ff;
+        }
+      }
+    }
+  }
+  .el-dialog__body {}
+}
+
+@media screen and (max-width: 1024px) {}
+
+@media screen and (max-width: 768px) {
+  .wrap {
+    .container {
+      padding: 3%;
+    }
+  }
+  .com_more_pop_header_box .area,
+  .el-date-editor--daterange.el-input, .el-date-editor--daterange.el-input__inner, .el-date-editor--timerange.el-input, .el-date-editor--timerange.el-input__inner {
+    width: auto;
+  }
+
+  .el-date-range-picker {
+    width: 90%;
+    left: 5% !important;
+    .el-picker-panel__body {
+      min-width: 100%;
+    }
+  }
+  .el-date-range-picker__content {
+    float: none;
+    width: 100%;
+    padding: 0;
+  }
+  .el-date-table td {
+    width: calc(100% / 7);
+  }
+}
