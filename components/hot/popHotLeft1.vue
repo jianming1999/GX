@@ -124,27 +124,6 @@
                 }
               },
               data:[
-                {
-                  itemStyle: {
-                    color: '#fda237'
-                  },
-                  value:335,
-                  name:'网站'
-                },
-                {
-                  itemStyle: {
-                    color: '#bd4ae6'
-                  },
-                  value:310,
-                  name:'移动端'
-                },
-                {
-                  itemStyle: {
-                    color: '#5fcc5f'
-                  },
-                  value:234,
-                  name:'终端'
-                }
               ]
             },
             {

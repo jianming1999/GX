@@ -16,7 +16,7 @@
       </div>
       <div class="con_box">
         <span class="com_more" @click="doShowMore('hotLeft1', '年度信访总量')">more</span>
-        <div id="hotLeft1" class="show_map"></div>
+        <div id="hotLeft1" @dblclick="doShowMore('hotLeft1', '年度信访总量')" class="show_map"></div>
       </div>
     </div>
     <div class="pages_hot_pop_box pages_hot_left_box pages_hot_left2_box">
@@ -25,7 +25,7 @@
       </div>
       <div class="con_box">
         <span class="com_more" @click="doShowMore('hotLeft2', '年度信访量同比')">more</span>
-        <div id="hotLeft2" class="show_map"></div>
+        <div id="hotLeft2" @dbl="doShowMore('hotLeft2', '年度信访量同比')" class="show_map"></div>
       </div>
     </div>
     <div class="pages_hot_pop_box pages_hot_left_box pages_hot_left3_box">
@@ -34,7 +34,7 @@
       </div>
       <div class="con_box">
         <span class="com_more" @click="doShowMore('hotLeft3', '年度重复集体访')">more</span>
-        <div id="hotLeft3" class="show_map"></div>
+        <div id="hotLeft3" @dblclick="doShowMore('hotLeft3', '年度重复集体访')" class="show_map"></div>
       </div>
     </div>
 
@@ -46,29 +46,36 @@
         <div id="hotRight1" class="show_map"></div>
       </div>
     </div>
+
     <div class="pages_hot_pop_box pages_hot_right_box pages_hot_right2_box">
+      <div class="tit_box">
+        <span class="t_l"></span><i class="t_c">红黄灯情况</i><span class="t_r"></span>
+      </div>
+      <div class="con_box clearfix">
+        <span class="com_more" @click="doShowMore('hotRight3', '红黄灯情况')">more</span>
+        <PopHotRight33></PopHotRight33>
+        <!--
+        <div id="hotRight3_1" class="show_map"></div>
+        <div id="hotRight3_2" class="show_map"></div>
+        -->
+      </div>
+    </div>
+
+    <div class="pages_hot_pop_box pages_hot_right_box pages_hot_right3_box">
       <div class="tit_box">
         <span class="t_l"></span><i class="t_c">热点词云</i><span class="t_r"></span>
       </div>
       <div class="con_box">
         <span class="com_more" @click="doShowMore('hotRight2', '热点词云')">more</span>
         <word-cloud
+          @click="doShowMore('hotRight2', '热点词云')"
           v-if="wordCloudData.length"
           :data="wordCloudData"
           id="hotRight2"
         />
       </div>
     </div>
-    <div class="pages_hot_pop_box pages_hot_right_box pages_hot_right3_box">
-      <div class="tit_box">
-        <span class="t_l"></span><i class="t_c">红黄灯情况</i><span class="t_r"></span>
-      </div>
-      <div class="con_box clearfix">
-        <span class="com_more" @click="doShowMore('hotRight3', '红黄灯情况')">more</span>
-        <div id="hotRight3_1" class="show_map"></div>
-        <div id="hotRight3_2" class="show_map"></div>
-      </div>
-    </div>
+    
 
     <div class="pages_hot_pop_box pages_hot_bottom_box pages_hot_bottom1_boxx">
       <div class="tit_box">
@@ -82,9 +89,9 @@
         <div id="hotBottom1_4" class="show_map"></div>
       </div>
     </div>
-
+    <!-- :width="dialogWidth" -->
     <el-dialog
-      :width="dialogWidth"
+      :fullscreen="true"      
       :append-to-body="true"
       :close-on-click-modal="false"
       :before-close="moreBeforeClose"
@@ -94,6 +101,7 @@
         <PopHotLeft1 v-if="more.type === 'hotLeft1'"></PopHotLeft1>
         <PopHotLeft2 v-if="more.type === 'hotLeft2'"></PopHotLeft2>
         <PopHotLeft3 v-if="more.type === 'hotLeft3'"></PopHotLeft3>
+        <PopHotRight1 v-if="more.type === 'hotRight1'"></PopHotRight1>
         <PopHotRight2 v-if="more.type === 'hotRight2'"></PopHotRight2>
         <PopHotRight3 v-if="more.type === 'hotRight3'"></PopHotRight3>
         <PopHotBottom1 v-if="more.type === 'hotBottom1'"></PopHotBottom1>
@@ -114,8 +122,10 @@
   import PopHotLeft1 from '~/components/hot/popHotLeft1.vue'
   import PopHotLeft2 from '~/components/hot/popHotLeft2.vue'
   import PopHotLeft3 from '~/components/hot/popHotLeft3.vue'
+  import PopHotRight1 from '~/components/hot/popHotRight1.vue'
   import PopHotRight2 from '~/components/hot/popHotRight2.vue'
   import PopHotRight3 from '~/components/hot/popHotRight3.vue'
+  import PopHotRight33 from '~/components/hot/popHotRight33.vue'
   import PopHotBottom1 from '~/components/hot/popHotBottom1.vue'
 
   export default {
@@ -124,8 +134,10 @@
       PopHotLeft1,
       PopHotLeft2,
       PopHotLeft3,
+      PopHotRight1,
       PopHotRight2,
       PopHotRight3,
+      PopHotRight33,
       PopHotBottom1
     },
 
@@ -179,7 +191,7 @@
         this.loadLeft2() // 加载年度信访量同比
         this.loadLeft3() // 加载年度重复集体访
         this.loadRight1() // 加载今日信访
-        this.loadRight3() // 加载红黄灯情况
+        //this.loadRight3() // 加载红黄灯情况
         this.loadBottom1() // 加载考核四率统计
       },
 
@@ -294,6 +306,9 @@
         const obj = {
           eId: 'hotLeft1',
           legend: {
+            orient: 'vertical',
+            left: 'right',
+            top: 'center',
             data:['来信','来访','网信','复查复核'],
             itemWidth: 10,
             itemHeight: 10,
@@ -302,57 +317,6 @@
             }
           },
           series: [
-            {
-              name:'年度信访总量',
-              type:'pie',
-              selectedMode: 'single',
-              radius: [0, '35%'],
-              center : ['50%', '55%'],
-              label: {
-                fontSize: 11,
-                normal: {
-                  position: 'inner'
-                },
-                emphasis: {
-                  formatter: '{b|{b}：}{c}  {per|{d}%}',
-                  rich: {}
-                }
-              },
-              labelLine: {
-                normal: {
-                  show: false
-                }
-              },
-              labelLine: {
-                normal: {
-                  length: 10,
-                  length2: 10
-                }
-              },
-              data:[
-                {
-                  itemStyle: {
-                    color: '#fda237'
-                  },
-                  value:335,
-                  name:'网站'
-                },
-                {
-                  itemStyle: {
-                    color: '#bd4ae6'
-                  },
-                  value:310,
-                  name:'移动端'
-                },
-                {
-                  itemStyle: {
-                    color: '#5fcc5f'
-                  },
-                  value:234,
-                  name:'终端'
-                }
-              ]
-            },
             {
               name:'年度信访总量',
               type:'pie',
@@ -430,6 +394,16 @@
 
       // 收集渲染的地图实例
       getMyChartList (obj) {
+        let self = this;
+        obj.on('click', (params) => {
+          console.log('params:');
+          console.log(params);
+          if(params.seriesName === '来信总量'){
+            self.doShowMore('hotRight1', '今日信访');  
+            console.log('doShowMore')
+          }
+          
+        });
         this.myChartList.push(obj)
       },
 
