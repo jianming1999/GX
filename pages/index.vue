@@ -267,7 +267,7 @@
         }
         var series = []
 
-        $.getJSON('/json/Guangxi.json', (mapData) => {
+        $.getJSON('/gx/json/Guangxi.json', (mapData) => {
           echarts.registerMap(mapName, mapData)
           this.globalObj = echarts.init(mapContanier)
 
@@ -1212,7 +1212,7 @@
     }
     .t_l {
       width: 50px;
-      background: url('/img/hot/visit_l.png') no-repeat;
+      background: url('/gx/img/hot/visit_l.png') no-repeat;
       background-size: auto 60px;
     }
     .t_r {
@@ -1220,7 +1220,7 @@
       padding-left: 20px;
       width: 134px;
       position: relative;
-      background: url(/img/hot/visit_r.png) no-repeat right 0;
+      background: url(/gx/img/hot/visit_r.png) no-repeat right 0;
       background-size: auto 60px;
       .n {
         position: absolute;
@@ -1242,7 +1242,7 @@
     .t_c {
       height: 60px;
       display: inline-block;
-      background: url('/img/hot/visit_c.png') repeat-x;
+      background: url('/gx/img/hot/visit_c.png') repeat-x;
       background-size: auto 60px;
       .tit {
         font-weight: bold;
