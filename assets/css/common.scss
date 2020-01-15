@@ -231,3 +231,24 @@ li { list-style: none;}
     width: calc(100% / 7);
   }
 }
+
+/** add style by jm  */
+.com_more_pop_header_box {
+  background:#0f3b71;
+  white-space: nowrap;           
+  color: #4fd9fc;
+  font-size: 14px;
+  padding: 10px 6px;
+   
+  .dot{width:8px;height:8px;background:#0569af;margin:0 6px 3px;vertical-align: middle;display: inline-block;}
+}
+.el-table th, .el-table tr{background-color:transparent;}
+
+.el-table tbody .el-table__row{
+  background-color: #032542;
+  color: #3394b4;
+}
+.el-table--striped .el-table__body tr.el-table__row--striped td{
+  background-color: #0f3558;
+}
+.el-table--enable-row-hover .el-table__body tr:hover>td{background-color:#032542}

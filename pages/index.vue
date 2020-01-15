@@ -12,35 +12,33 @@
 
     <div class="pages_hot_pop_box pages_hot_left_box pages_hot_left1_box">
       <div class="tit_box">
-        <span class="t_l"></span><i class="t_c">年度信访总量</i><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">年度信访总量</i><span class="com_more" @click="doShowMore('hotLeft1', '年度信访总量')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box">
-        <span class="com_more" @click="doShowMore('hotLeft1', '年度信访总量')">more</span>
+        
         <div id="hotLeft1" @dblclick="doShowMore('hotLeft1', '年度信访总量')" class="show_map"></div>
       </div>
     </div>
     <div class="pages_hot_pop_box pages_hot_left_box pages_hot_left2_box">
       <div class="tit_box">
-        <span class="t_l"></span><i class="t_c">年度信访量同比</i><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">年度信访量同比</i><span class="com_more" @click="doShowMore('hotLeft2', '年度信访量同比')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box">
-        <span class="com_more" @click="doShowMore('hotLeft2', '年度信访量同比')">more</span>
         <div id="hotLeft2" @dbl="doShowMore('hotLeft2', '年度信访量同比')" class="show_map"></div>
       </div>
     </div>
     <div class="pages_hot_pop_box pages_hot_left_box pages_hot_left3_box">
       <div class="tit_box">
-        <span class="t_l"></span><i class="t_c">年度重复集体访</i><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">年度重复集体访</i><span class="com_more" @click="doShowMore('hotLeft3', '年度重复集体访')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box">
-        <span class="com_more" @click="doShowMore('hotLeft3', '年度重复集体访')">more</span>
         <div id="hotLeft3" @dblclick="doShowMore('hotLeft3', '年度重复集体访')" class="show_map"></div>
       </div>
     </div>
 
     <div class="pages_hot_pop_box pages_hot_right_box pages_hot_right1_box">
       <div class="tit_box">
-        <span class="t_l"></span><i class="t_c">今日信访</i><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">今日信访</i><span class="com_more" >全区录入：188件</span><span class="t_r"></span>
       </div>
       <div class="con_box">
         <div id="hotRight1" class="show_map"></div>
@@ -49,11 +47,11 @@
 
     <div class="pages_hot_pop_box pages_hot_right_box pages_hot_right2_box">
       <div class="tit_box">
-        <span class="t_l"></span><i class="t_c">红黄灯情况</i><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">红黄灯情况</i><span class="com_more" @click="doShowMore('visitList', '红黄灯情况')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box clearfix">
-        <span class="com_more" @click="doShowMore('hotRight3', '红黄灯情况')">more</span>
-        <PopHotRight33></PopHotRight33>
+        
+        <PopHotRight3 @click="doShowMore('visitList', '年度重复集体访')"></PopHotRight3>
         <!--
         <div id="hotRight3_1" class="show_map"></div>
         <div id="hotRight3_2" class="show_map"></div>
@@ -63,12 +61,12 @@
 
     <div class="pages_hot_pop_box pages_hot_right_box pages_hot_right3_box">
       <div class="tit_box">
-        <span class="t_l"></span><i class="t_c">热点词云</i><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">热点词云</i><span class="com_more" @click="doShowMore('hotRight2', '热点词云')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box">
-        <span class="com_more" @click="doShowMore('hotRight2', '热点词云')">more</span>
+        
         <word-cloud
-          @click="doShowMore('hotRight2', '热点词云')"
+          @callback="wordClick"
           v-if="wordCloudData.length"
           :data="wordCloudData"
           id="hotRight2"
@@ -79,10 +77,10 @@
 
     <div class="pages_hot_pop_box pages_hot_bottom_box pages_hot_bottom1_boxx">
       <div class="tit_box">
-        <span class="t_l"></span><i class="t_c">考核四率统计</i><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">考核四率统计</i><span class="com_more" @click="doShowMore('hotBottom1', '考核四率统计')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box clearfix">
-        <span class="com_more" @click="doShowMore('hotBottom1', '考核四率统计')">more</span>
+        
         <div id="hotBottom1_1" class="show_map"></div>
         <div id="hotBottom1_2" class="show_map"></div>
         <div id="hotBottom1_3" class="show_map"></div>
@@ -125,7 +123,6 @@
   import PopHotRight1 from '~/components/hot/popHotRight1.vue'
   import PopHotRight2 from '~/components/hot/popHotRight2.vue'
   import PopHotRight3 from '~/components/hot/popHotRight3.vue'
-  import PopHotRight33 from '~/components/hot/popHotRight33.vue'
   import PopHotBottom1 from '~/components/hot/popHotBottom1.vue'
 
   export default {
@@ -137,7 +134,6 @@
       PopHotRight1,
       PopHotRight2,
       PopHotRight3,
-      PopHotRight33,
       PopHotBottom1
     },
 
@@ -185,6 +181,10 @@
 
     // 方法集合
     methods: {
+      // 词云item - click
+      wordClick (word) {
+        this.doShowMore('visitList', word);
+      },
       // 地图对应加载的数据
       mapInit () {
         this.loadLeft1() // 加载年度信访总量
@@ -399,7 +399,7 @@
           console.log('params:');
           console.log(params);
           if(params.seriesName === '来信总量'){
-            self.doShowMore('hotRight1', '今日信访');  
+            self.doShowMore('visitList', '今日信访');  
             console.log('doShowMore')
           }
           
@@ -501,7 +501,7 @@
             right: '3%',
             top: '30%',
             bottom: '3%',
-            data: ['重复访', '集体访', '初次访'],
+            data: ['区直单位', '地市信访', '市直单位'],
             itemWidth: 10,
             itemHeight: 10,
             textStyle: {
@@ -510,7 +510,7 @@
           },
           series : [
             {
-              name: '年度重复集体访',
+              name: '全区接入单位人员占比',
               type: 'pie',
               center: ['40%', '50%'],
               label: {
@@ -533,21 +533,21 @@
                   itemStyle: {
                     color: '#fea21f'
                   },
-                  name: '重复访',
+                  name: '区直单位',
                   value: 128
                 },
                 {
                   itemStyle: {
                     color: '#0666e8'
                   },
-                  name: '集体访',
+                  name: '地市信访',
                   value: 120
                 },
                 {
                   itemStyle: {
                     color: '#3eb177'
                   },
-                  name: '初次访',
+                  name: '市直单位',
                   value: 45
                 }
               ],
@@ -1128,10 +1128,11 @@
       },
 
       // 点击more弹框
-      doShowMore (type, tit) {
-        this.more.visible = true
-        this.more.type = type
-        this.more.title = tit
+      doShowMore (type, val) {
+        // this.more.visible = true
+        // this.more.type = type
+        // this.more.title = tit
+        this.$router.push({path: `/${type}?val=${val}`});
       },
 
       // more弹框对象
@@ -1263,31 +1264,37 @@
     position: absolute;
     z-index: 4;
     .tit_box {
-      white-space: nowrap;
-      margin-bottom: 1%;
-      text-align: center;
+      background:#0f3b71;
+      white-space: nowrap;           
       color: #4fd9fc;
       font-size: 14px;
+      padding:0 6px;
+
+       .com_more {
+        position: absolute;        
+        right: 6px;       
+        color: #6a92ef;
+        z-index:5;
+        font-size:9px;        
+        cursor:pointer;
+        line-height: 24px;
+      }
       .t_l, .t_r {
         width: 54px;
         height: 7px;
         display: inline-block;
       }
-      .t_l {
-        background: url('/img/hot/tit_l.png') no-repeat
-      }
-      .t_r {
-        background: url('/img/hot/tit_r.png') no-repeat
-      }
+    
       .t_c {
         margin: 0 5px;
       }
+      .dot{width:8px;height:8px;background:#0569af;margin:0 6px 3px;vertical-align: middle;display: inline-block;}
     }
     .con_box {
       overflow: hidden;
       position: relative;
       height: calc(98% - 26px);
-      border: 1px solid #0e607f;
+      background:#130049;
       padding: 1%;
       box-shadow: 0px 0px 5px #0e607f inset;
       border-radius: 2px;
@@ -1295,19 +1302,8 @@
       -moz-transition: all 0.5s ease;
       -ms-transition: all 0.5s ease;
       -o-transition: all 0.5s ease;
-      .com_more {
-        position: absolute;
-        top:0;
-        right: 0;
-        border: 1px solid #2c56b3;
-        color: #6a92ef;
-        z-index: 5;
-        font-size: 12px;
-        padding: 0 5px;
-        cursor: pointer;
-        line-height: 18px;
-        cursor: pointer;
-      }
+      
+      
       .show_map {
         width: 100%;
         height: 100%;

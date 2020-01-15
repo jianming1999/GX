@@ -1,48 +1,15 @@
 <template>
   <div class="com_more_pop_box">
     <div class="com_more_pop_header_box clearfix">
-      <div class="com_left marB10 marR10 title">统计条件:</div>
+      <div class="com_left marR10 title"><i class="dot"></i>年度信访总量-来访</div>
 
-      <el-cascader
-        class="com_left marB10 marR10 area"
-        v-model="search.area"
-        placeholder="广西壮族自治区信访局"
-        :options="areaDataList"
-        clearable
-        filterable>
-      </el-cascader>
-
-      <el-date-picker
-        class="com_left marB10 marR10 w140px"
-        v-model="search.sYear"
-        type="year"
-        :editable="false"
-        placeholder="选择开始年份">
-      </el-date-picker>
-      <el-date-picker
-        class="com_left marB10 marR10 w140px"
-        v-model="search.eYear"
-        type="year"
-        :editable="false"
-        placeholder="选择结束年份">
-      </el-date-picker>
-
-      <el-select class="com_left marB10 marR10 w140px" v-model="search.type" placeholder="请选择信访形式" clearable>
-        <el-option
-          v-for="item in typeOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-        </el-option>
-      </el-select>
-
-      <el-button class="com_left marB10 marR10" type="primary" size="small" @click="doSearch">查询</el-button>
+      <el-button class="com_right marR10" type="primary" size="small" @click="doSearch">下载</el-button>
 
     </div>
     <div class="com_more_pop_body_box clearfix">
       <div>
       	<el-table
-      	  stripe
+        stripe
 	      :data="tableData"
 	      style="width: 100%">
 	      <el-table-column
@@ -113,7 +80,7 @@
 	        zrStatus: '及时受理',
 	        bjStatus: '及时受理'
 	      },{
-      		index: '2',
+      		index: '1',
 	        id: '32325325325',
 	        name: '张三',
 	        idno: '3252352553535353',
@@ -122,7 +89,7 @@
 	        zrStatus: '及时受理',
 	        bjStatus: '及时受理'
 	      },{
-      		index: '3',
+      		index: '1',
 	        id: '32325325325',
 	        name: '张三',
 	        idno: '3252352553535353',

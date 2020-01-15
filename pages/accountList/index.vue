@@ -1,48 +1,13 @@
 <template>
   <div class="com_more_pop_box">
     <div class="com_more_pop_header_box clearfix">
-      <div class="com_left marB10 marR10 title">统计条件:</div>
-
-      <el-cascader
-        class="com_left marB10 marR10 area"
-        v-model="search.area"
-        placeholder="广西壮族自治区信访局"
-        :options="areaDataList"
-        clearable
-        filterable>
-      </el-cascader>
-
-      <el-date-picker
-        class="com_left marB10 marR10 w140px"
-        v-model="search.sYear"
-        type="year"
-        :editable="false"
-        placeholder="选择开始年份">
-      </el-date-picker>
-      <el-date-picker
-        class="com_left marB10 marR10 w140px"
-        v-model="search.eYear"
-        type="year"
-        :editable="false"
-        placeholder="选择结束年份">
-      </el-date-picker>
-
-      <el-select class="com_left marB10 marR10 w140px" v-model="search.type" placeholder="请选择信访形式" clearable>
-        <el-option
-          v-for="item in typeOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-        </el-option>
-      </el-select>
-
-      <el-button class="com_left marB10 marR10" type="primary" size="small" @click="doSearch">查询</el-button>
-
+      <div class="com_left marR10 title"><i class="dot"></i>账号列表[ 南宁市信访局 ]</div>
     </div>
     <div class="com_more_pop_body_box clearfix">
       <div>
       	<el-table
-      	  stripe
+        stripe
+        @cell-click="visitList"
 	      :data="tableData"
 	      style="width: 100%">
 	      <el-table-column
@@ -51,34 +16,30 @@
 	        width="180">
 	      </el-table-column>
 	      <el-table-column
-	        prop="id"
-	        label="信访件编号"
+	        prop="userName"
+	        label="用户名"
 	        width="180">
 	      </el-table-column>
 	      <el-table-column
-	        prop="name"
-	        label="信访人"
+	        prop="loginName"
+	        label="登录账号"
 	        width="180">
 	      </el-table-column>
 	      <el-table-column
-	        prop="idno"
-	        label="证件号码">
+	        prop="partName"
+	        label="处室/科室">
 	      </el-table-column>
 	      <el-table-column
-	        prop="status"
-	        label="处理状态">
+	        prop="pos"
+	        label="岗位">
 	      </el-table-column>
 	      <el-table-column
-	        prop="viewStatus"
-	        label="信访受理状态">
+	        prop="tel"
+	        label="联系电话">
 	      </el-table-column>
 	      <el-table-column
-	        prop="zrStatus"
-	        label="责任受理状态">
-	      </el-table-column>
-	      <el-table-column
-	        prop="bjStatus"
-	        label="办结状态">
+	        prop="count"
+	        label="待办数量">
 	      </el-table-column>
 	    </el-table>
 	    <div class="page-box">
@@ -105,32 +66,61 @@
       return {
       	tableData: [{
       		index: '1',
-	        id: '32325325325',
-	        name: '张三',
-	        idno: '3252352553535353',
-	        status: '己办结',
-	        viewStatus: '及时受理',
-	        zrStatus: '及时受理',
-	        bjStatus: '及时受理'
+	        userName: '张三',
+	        loginName: 'gxxfzs',
+	        partName: '接访科',
+	        pos: '接访中心主任',
+	        tel: '18998881233',
+	        count: 20
 	      },{
-      		index: '2',
-	        id: '32325325325',
-	        name: '张三',
-	        idno: '3252352553535353',
-	        status: '己办结',
-	        viewStatus: '及时受理',
-	        zrStatus: '及时受理',
-	        bjStatus: '及时受理'
-	      },{
-      		index: '3',
-	        id: '32325325325',
-	        name: '张三',
-	        idno: '3252352553535353',
-	        status: '己办结',
-	        viewStatus: '及时受理',
-	        zrStatus: '及时受理',
-	        bjStatus: '及时受理'
-	      }],
+          index: '1',
+          userName: '张三',
+          loginName: 'gxxfzs',
+          partName: '接访科',
+          pos: '接访中心主任',
+          tel: '18998881233',
+          count: 20
+        },{
+          index: '1',
+          userName: '张三',
+          loginName: 'gxxfzs',
+          partName: '接访科',
+          pos: '接访中心主任',
+          tel: '18998881233',
+          count: 20
+        },{
+          index: '1',
+          userName: '张三',
+          loginName: 'gxxfzs',
+          partName: '接访科',
+          pos: '接访中心主任',
+          tel: '18998881233',
+          count: 20
+        },{
+          index: '1',
+          userName: '张三',
+          loginName: 'gxxfzs',
+          partName: '接访科',
+          pos: '接访中心主任',
+          tel: '18998881233',
+          count: 20
+        },{
+          index: '1',
+          userName: '张三',
+          loginName: 'gxxfzs',
+          partName: '接访科',
+          pos: '接访中心主任',
+          tel: '18998881233',
+          count: 20
+        },{
+          index: '1',
+          userName: '张三',
+          loginName: 'gxxfzs',
+          partName: '接访科',
+          pos: '接访中心主任',
+          tel: '18998881233',
+          count: 20
+        }],
         areaDataList: [],
         typeOptions: [], // 信访形式
         search: this.clearSearchValue() // 搜索条件
@@ -168,6 +158,11 @@
         console.log(this.search.eYear)
         console.log(this.search.type)
 
+      },
+      visitList(row, cell, aa){
+        if(cell.property === 'count'){
+          this.$router.push({path: `/visitList?index=${row.index}`});
+        }
       }
     }
   }
