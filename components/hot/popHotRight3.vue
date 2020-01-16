@@ -1,11 +1,11 @@
 <template>
   <div class="canvas_box">
-		<canvas id="ca" class="canvas" width="640" height="400"></canvas>
+		<canvas id="ca" class="canvas" width="600" height="300"></canvas>
   </div>
 </template>
 <style type="text/css">
 	.canvas_box{text-align: center;}
-	.canvas_box .canvas{width: 320px;height:200px;}
+	.canvas_box .canvas{width: 300px;height:150px;}
 </style>
 <script>
 	import common from '~/assets/js/common.js'
@@ -192,10 +192,10 @@
 						val: 3,
 						startX: 150,
 						startY: 80,
-						radius: 37,
+						radius: 34,
 						desc: '今日过期',
 						strokeStyle: '#9746d3',
-						valFont: '30px bold Arial',
+						valFont: '24px bold Arial',
 						valFix: {
 							x: -8,
 							y: 0
@@ -210,11 +210,11 @@
 						cur: curValMap.cur2-=0.005,
 						val: 5,
 						startX: 50,
-						startY: 36,
-						radius: 25,
+						startY: 40,
+						radius: 22,
 						desc: '受理黄灯',
 						strokeStyle: '#d18733',
-						valFont: '20px bold Arial',
+						valFont: '14px bold Arial',
 						valFix: {
 							x: -5,
 							y: 0
@@ -222,18 +222,18 @@
 						descFont: '10px bold Arial',
 						descFix: {
 							x: -18,
-							y: 18
+							y: 12
 						}
 					});
 					draw({
 						cur: curValMap.cur3+=0.005,
 						val: 1,
 						startX: 250,
-						startY: 36	,
-						radius: 24,
+						startY: 40,
+						radius: 22,
 						desc: '办结黄灯',
 						strokeStyle: '#d18733',
-						valFont: '20px bold Arial',
+						valFont: '14px bold Arial',
 						valFix: {
 							x: -5,
 							y: 0
@@ -241,18 +241,18 @@
 						descFont: '10px bold Arial',
 						descFix: {
 							x: -18,
-							y: 18
+							y: 12
 						}
 					});
 					draw({
 						cur: curValMap.cur4-=0.005,
 						val: 3,
 						startX: 50,
-						startY: 120,
-						radius: 25,
+						startY: 114,
+						radius: 22,
 						desc: '受理红灯',
 						strokeStyle: '#b0374b',
-						valFont: '20px bold Arial',
+						valFont: '14px bold Arial',
 						valFix: {
 							x: -5,
 							y: 0
@@ -260,18 +260,18 @@
 						descFont: '10px bold Arial',
 						descFix: {
 							x: -18,
-							y: 18
+							y: 12
 						}
 					});
 					draw({
 						cur: curValMap.cur5+=0.005,
 						val: 0,
 						startX: 250,
-						startY: 120,
-						radius: 25,
+						startY: 114,
+						radius: 22,
 						desc: '办结红灯',
 						strokeStyle: '#b0374b',
-						valFont: '20px bold Arial',
+						valFont: '14px bold Arial',
 						valFix: {
 							x: -5,
 							y: 0
@@ -279,7 +279,7 @@
 						descFont: '10px bold Arial',
 						descFix: {
 							x: -18,
-							y: 18
+							y: 12
 						}
 					});
 					if(clickX !== undefined && clickY !== undefined){

@@ -4,7 +4,7 @@
   padding:0; margin: 0;
 }
 html, body { height: 100%;}
-body {color: #fff; background: url('/img/bg.jpg') no-repeat #0d0119; font: 12px/24px "微软雅黑";}
+body {color: #fff; background: url('/gx/img/bg.jpg') no-repeat #0d0119; font: 12px/24px "微软雅黑";}
 .clearfix:after{display: block;clear : both;content : "";visibility : hidden;height : 0;}
 .clearfix{zoom : 1;}
 ::-moz-placeholder { color: #98ABB1; font-size: 12px;}
@@ -233,6 +233,23 @@ li { list-style: none;}
 }
 
 /** add style by jm  */
+.pages_hot_pop_box .con_box{padding-top: 10px;}
+.pages_hot_right2_box .con_box{
+  padding-top: 10px;
+}
+.pages_hot_right3_box .con_box{
+  padding: 10px 0;
+}
+.pages_hot_right3_box .con_box canvas {
+  height: 120px!important;
+  border-radius: 120px;
+}
+.el-table td, .el-table th.is-leaf{border:none;}
+.el-table--border::after, .el-table--group::after, .el-table::before{background-color:transparent;}
+.el-dialog, .el-pager li{background:transparent;color:#409EFF;}
+.el-pager li.active{color:#eaf1ff;}
+.el-pagination .btn-next, .el-pagination .btn-prev,.el-pagination button:disabled,.el-pagination .btn-next, .el-pagination .el-pager li.btn-quicknext, .el-pager li.btn-quickprev,.btn-prev{background:transparent;color:#409EFF}
+.el-table thead{color: #4fdafc;background: #0c51a5;}
 .com_more_pop_header_box {
   background:#0f3b71;
   white-space: nowrap;           

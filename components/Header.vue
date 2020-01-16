@@ -48,7 +48,7 @@
 
 <style lang="scss" scoped>
   .header {
-    background: url('/img/nav/bg.png') no-repeat center 0;
+    background: url('/gx/img/nav/bg.png') no-repeat center 0;
     border-bottom: 1px solid #1561a4;
     background-size: auto 80px;
   }
@@ -97,13 +97,13 @@
 
       &:hover {
         .m {
-          background: url('/img/nav/hover.png') repeat-x center bottom;
+          background: url('/gx/img/nav/hover.png') repeat-x center bottom;
           background-size: auto 60px;
         }
       }
       &.focus {
         .m {
-          background: url('/img/nav/focus.png') repeat-x center bottom;
+          background: url('/gx/img/nav/focus.png') repeat-x center bottom;
           background-size: auto 60px;
         }
       }

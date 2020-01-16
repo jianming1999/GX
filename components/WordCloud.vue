@@ -127,8 +127,5 @@
   }
 </script>
 <style lang='scss'>
-.pages_hot_right3_box canvas {
-  height: 133px!important;
-  border-radius: 120px;
-}
+
 </style>

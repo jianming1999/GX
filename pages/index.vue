@@ -12,27 +12,27 @@
 
     <div class="pages_hot_pop_box pages_hot_left_box pages_hot_left1_box">
       <div class="tit_box">
-        <span class="t_l dot"></span><i class="t_c">年度信访总量</i><span class="com_more" @click="doShowMore('hotLeft1', '年度信访总量')">更多</span><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">年度信访总量</i><span class="com_more" @click="doShowMore('hotLeft1')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box">
         
-        <div id="hotLeft1" @dblclick="doShowMore('hotLeft1', '年度信访总量')" class="show_map"></div>
+        <div id="hotLeft1" @dblclick="doShowMore('hotLeft1')" class="show_map"></div>
       </div>
     </div>
     <div class="pages_hot_pop_box pages_hot_left_box pages_hot_left2_box">
       <div class="tit_box">
-        <span class="t_l dot"></span><i class="t_c">年度信访量同比</i><span class="com_more" @click="doShowMore('hotLeft2', '年度信访量同比')">更多</span><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">年度信访量同比</i><span class="com_more" @click="doShowMore('hotLeft2')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box">
-        <div id="hotLeft2" @dbl="doShowMore('hotLeft2', '年度信访量同比')" class="show_map"></div>
+        <div id="hotLeft2" @dblclick="doShowMore('hotLeft2')" class="show_map"></div>
       </div>
     </div>
     <div class="pages_hot_pop_box pages_hot_left_box pages_hot_left3_box">
       <div class="tit_box">
-        <span class="t_l dot"></span><i class="t_c">年度重复集体访</i><span class="com_more" @click="doShowMore('hotLeft3', '年度重复集体访')">更多</span><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">年度重复集体访</i><span class="com_more" @click="doShowMore('hotLeft3')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box">
-        <div id="hotLeft3" @dblclick="doShowMore('hotLeft3', '年度重复集体访')" class="show_map"></div>
+        <div id="hotLeft3" @dblclick="doShowMore('hotLeft3')" class="show_map"></div>
       </div>
     </div>
 
@@ -47,11 +47,11 @@
 
     <div class="pages_hot_pop_box pages_hot_right_box pages_hot_right2_box">
       <div class="tit_box">
-        <span class="t_l dot"></span><i class="t_c">红黄灯情况</i><span class="com_more" @click="doShowMore('visitList', '红黄灯情况')">更多</span><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">红黄灯情况</i><span class="com_more" @click="doShowMore('visitList')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box clearfix">
         
-        <PopHotRight3 @click="doShowMore('visitList', '年度重复集体访')"></PopHotRight3>
+        <PopHotRight3 @click="doShowMore('visitList')"></PopHotRight3>
         <!--
         <div id="hotRight3_1" class="show_map"></div>
         <div id="hotRight3_2" class="show_map"></div>
@@ -61,7 +61,7 @@
 
     <div class="pages_hot_pop_box pages_hot_right_box pages_hot_right3_box">
       <div class="tit_box">
-        <span class="t_l dot"></span><i class="t_c">热点词云</i><span class="com_more" @click="doShowMore('hotRight2', '热点词云')">更多</span><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">热点词云</i><span class="com_more" @click="doShowMore('hotRight2')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box">
         
@@ -77,14 +77,14 @@
 
     <div class="pages_hot_pop_box pages_hot_bottom_box pages_hot_bottom1_boxx">
       <div class="tit_box">
-        <span class="t_l dot"></span><i class="t_c">考核四率统计</i><span class="com_more" @click="doShowMore('hotBottom1', '考核四率统计')">更多</span><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">考核四率统计</i><span class="com_more" @click="doShowMore('hotBottom1')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box clearfix">
         
-        <div id="hotBottom1_1" class="show_map"></div>
-        <div id="hotBottom1_2" class="show_map"></div>
-        <div id="hotBottom1_3" class="show_map"></div>
-        <div id="hotBottom1_4" class="show_map"></div>
+        <div id="hotBottom1_1" @click="doShowMore('hotBottom1')" @dblclick="doShowMore('hotBottom1')" class="show_map"></div>
+        <div id="hotBottom1_2" @click="doShowMore('hotBottom1')" @dblclick="doShowMore('hotBottom1')" class="show_map"></div>
+        <div id="hotBottom1_3" @click="doShowMore('hotBottom1')" @dblclick="doShowMore('hotBottom1')" class="show_map"></div>
+        <div id="hotBottom1_4" @click="doShowMore('hotBottom1')" @dblclick="doShowMore('hotBottom1')" class="show_map"></div>
       </div>
     </div>
     <!-- :width="dialogWidth" -->
@@ -183,7 +183,7 @@
     methods: {
       // 词云item - click
       wordClick (word) {
-        this.doShowMore('visitList', word);
+        this.doShowMore('visitList', {word: word});
       },
       // 地图对应加载的数据
       mapInit () {
@@ -267,7 +267,7 @@
         }
         var series = []
 
-        $.getJSON('/json/Guangxi.json', (mapData) => {
+        $.getJSON('/gx/json/Guangxi.json', (mapData) => {
           echarts.registerMap(mapName, mapData)
           this.globalObj = echarts.init(mapContanier)
 
@@ -398,10 +398,10 @@
         obj.on('click', (params) => {
           console.log('params:');
           console.log(params);
-          if(params.seriesName === '来信总量'){
-            self.doShowMore('visitList', '今日信访');  
-            console.log('doShowMore')
+          if(params.seriesName === '考核四率统计'){
+            return;
           }
+          self.doShowMore('visitList', params);
           
         });
         this.myChartList.push(obj)
@@ -510,7 +510,7 @@
           },
           series : [
             {
-              name: '全区接入单位人员占比',
+              name: '年度重复集体访',
               type: 'pie',
               center: ['40%', '50%'],
               label: {
@@ -1128,11 +1128,11 @@
       },
 
       // 点击more弹框
-      doShowMore (type, val) {
+      doShowMore (type, params) {
         // this.more.visible = true
         // this.more.type = type
         // this.more.title = tit
-        this.$router.push({path: `/${type}?val=${val}`});
+        this.$router.push({path: `/${type}`, params: params});
       },
 
       // more弹框对象
@@ -1212,7 +1212,7 @@
     }
     .t_l {
       width: 50px;
-      background: url('/img/hot/visit_l.png') no-repeat;
+      background: url('/gx/img/hot/visit_l.png') no-repeat;
       background-size: auto 60px;
     }
     .t_r {
@@ -1220,7 +1220,7 @@
       padding-left: 20px;
       width: 134px;
       position: relative;
-      background: url(/img/hot/visit_r.png) no-repeat right 0;
+      background: url(/gx/img/hot/visit_r.png) no-repeat right 0;
       background-size: auto 60px;
       .n {
         position: absolute;
@@ -1242,7 +1242,7 @@
     .t_c {
       height: 60px;
       display: inline-block;
-      background: url('/img/hot/visit_c.png') repeat-x;
+      background: url('/gx/img/hot/visit_c.png') repeat-x;
       background-size: auto 60px;
       .tit {
         font-weight: bold;
@@ -1334,7 +1334,7 @@
   }
   .pages_hot_right2_box {
     .con_box {
-      padding-top: 20px;
+      padding-top: 0px;
     }
   }
   .pages_hot_left3_box,
