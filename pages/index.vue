@@ -49,9 +49,9 @@
       <div class="tit_box">
         <span class="t_l dot"></span><i class="t_c">红黄灯情况</i><span class="com_more" @click="doShowMore('visitList')">更多</span><span class="t_r"></span>
       </div>
-      <div class="con_box clearfix">
+      <div class="con_box clearfix" @dblclick="doShowMore('visitList')" @click="doShowMore('visitList')">
         
-        <PopHotRight3 @click="doShowMore('visitList')"></PopHotRight3>
+        <PopHotRight3></PopHotRight3>
         <!--
         <div id="hotRight3_1" class="show_map"></div>
         <div id="hotRight3_2" class="show_map"></div>

@@ -1,10 +1,12 @@
 <template>
   <div class="header">
-    <ul class="nav_box clearfix">
+    
+    <ul class="nav_box clearfix" @mouseenter="toggleMenu()" @mouseleave="toggleMenu()">
       <nuxt-link tag="li" :to="{ name: 'index' }" :class="curMenuUrl === 'index' ? 'focus' : ''">
         <i class="t">热点模型</i>
         <span class="m"></span>
       </nuxt-link>
+      <div v-show="menuVisible">
       <nuxt-link tag="li" :to="{ name: 'warn' }" :class="curMenuUrl === 'warn' ? 'focus' : ''">
         <i class="t">预警信息</i>
         <span class="m"></span>
@@ -14,7 +16,7 @@
         <span class="m"></span>
       </nuxt-link>
       <nuxt-link tag="li" :to="{ name: 'oetitioners' }" class="nav_tit_margin" :class="curMenuUrl === 'oetitioners' ? 'focus' : ''">
-        <i class="t">信访人画像</i>
+        <i class="t">信访人像</i>
         <span class="m"></span>
       </nuxt-link>
       <nuxt-link tag="li" :to="{ name: 'company' }" :class="curMenuUrl === 'company' ? 'focus' : ''">
@@ -25,7 +27,11 @@
         <i class="t">形式研判</i>
         <span class="m"></span>
       </nuxt-link>
+      </div>
     </ul>
+    <div class="header_r">
+    <a href="#">区直单位</a> <a href="#">地市桌面</a><span class="time_tit">2022年2月23日</span>
+    </div>
   </div>
 </template>
 
@@ -33,7 +39,9 @@
   import { mapState } from 'vuex'
   export default {
     data () {
-      return {}
+      return {
+        menuVisible: false
+      }
     },
     computed: {
       ...mapState({
@@ -42,7 +50,12 @@
         }
       })
     },
-    mounted () {}
+    mounted () {},
+    methods: {
+      toggleMenu(){
+        this.menuVisible = !this.menuVisible;
+      }
+    }
   }
 </script>
 
@@ -51,20 +64,36 @@
     background: url('/gx/img/nav/bg.png') no-repeat center 0;
     border-bottom: 1px solid #1561a4;
     background-size: auto 80px;
-  }
-  .nav_tit_margin {
-    margin-left: 500px;
+    height:81px;
+    ul{width:11%;height:auto;opacity:0.9;position:relative;
+    top:30px; z-index:1;
+    position: absolute;
+      li{
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+    }
+
+    .header_r{
+      width:30%;font-size:18px;
+       text-align:right;
+       position:relative;
+       top:30px;
+       z-index:10;
+       color: #92d2ff;
+       float:right;
+       margin:0 12px;
+       a{color: #92d2ff;margin: 0 8px;border:1px solid #3772ba;padding:5px 15px;border-radius:2px;}
+       .time_tit{margin-left:15px;}
+       }
   }
   .nav_box {
-    padding-top: 20px;
-    line-height: 60px;
     margin: 0 10px;
-    li {
-      position: relative;
+     background:#081b5b;
+     display:inline-block;
+     li {
       color: #4fd9fc;
-      float:left;
-      width: calc((100% - 500px) / 6);
-      font-size: 20px;
+      font-size:18px;
       text-align: center;
       white-space: nowrap;
       cursor: pointer;
@@ -97,13 +126,13 @@
 
       &:hover {
         .m {
-          background: url('/gx/img/nav/hover.png') repeat-x center bottom;
-          background-size: auto 60px;
+          background:#10469b;
+          background-size:auto 60px;
         }
       }
       &.focus {
         .m {
-          background: url('/gx/img/nav/focus.png') repeat-x center bottom;
+          background:＃10469b;
           background-size: auto 60px;
         }
       }
