@@ -15,7 +15,7 @@
 	      <el-table-column
 	        prop="index"
 	        label="序号"
-	        width="180">
+	        width="80">
 	      </el-table-column>
 	      <el-table-column
 	        prop="id"
@@ -25,11 +25,12 @@
 	      <el-table-column
 	        prop="name"
 	        label="信访人"
-	        width="180">
+	        width="120">
 	      </el-table-column>
 	      <el-table-column
 	        prop="idno"
-	        label="证件号码">
+	        label="证件号码"
+          width="200">
 	      </el-table-column>
 	      <el-table-column
 	        prop="status"
@@ -48,7 +49,7 @@
 	        label="办结状态">
 	      </el-table-column>
 	    </el-table>
-	    <div class="page-box">
+	    <div class="page-box" v-if="tableData.length">
       	<el-pagination
 		  :page-size="20"
 		  :pager-count="11"
