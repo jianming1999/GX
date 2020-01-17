@@ -365,10 +365,21 @@
       loadLeft1 () {
         const obj = {
           eId: 'hotLeft1',
+          // legend: {
+          //   orient: 'vertical',
+          //   left: 'left',
+          //   top: 'center',
+          //   data:['来信','来访','网信','复查复核'],
+          //   itemWidth: 10,
+          //   itemHeight: 10,
+          //   textStyle: {
+          //     color: '#fff'
+          //   }
+          // },
           legend: {
             orient: 'vertical',
-            left: 'right',
             top: 'center',
+            right: '3%',
             data:['来信','来访','网信','复查复核'],
             itemWidth: 10,
             itemHeight: 10,
@@ -381,7 +392,7 @@
               name:'年度信访总量',
               type:'pie',
               radius: ['45%', '60%'],
-              center : ['50%', '55%'],
+              center : ['40%', '50%'],
               label: {
                 normal: {
                   formatter: '{b|{b} }\n{c|{c}}\n[{per|{d}%}]',
