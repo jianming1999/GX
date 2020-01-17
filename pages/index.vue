@@ -122,6 +122,7 @@
         <PopHotRight2 v-if="more.type === 'hotRight2'"></PopHotRight2>
         <PopHotRight3 v-if="more.type === 'hotRight3'"></PopHotRight3>
         <PopHotBottom1 v-if="more.type === 'hotBottom1'"></PopHotBottom1>
+        <PopHotWordDetail v-if="more.type === 'hotWordDetail'" @doWordCloud="doWordCloud"></PopHotWordDetail>
         <PopVisitList v-if="more.type === 'visitList'"></PopVisitList>
         <PopComList v-if="more.type === 'comList'" @accountEvent="accountEvent"></PopComList>
         <PopAccountList v-if="more.type === 'accountList'" @daibanEvent="daibanEvent"></PopAccountList>
@@ -146,6 +147,7 @@
   import PopHotRight2 from '~/components/hot/popHotRight2.vue'
   import PopHotRight3 from '~/components/hot/popHotRight3.vue'
   import PopHotBottom1 from '~/components/hot/popHotBottom1.vue'
+  import PopHotWordDetail from '~/components/hot/popHotWordDetail.vue'
   import PopAccountList from '~/components/hot/popAccountList.vue'
   import PopComList from '~/components/hot/popComList.vue'
   import PopVisitList from '~/components/hot/popVisitList.vue'
@@ -161,6 +163,7 @@
       PopHotRight2,
       PopHotRight3,
       PopHotBottom1,
+      PopHotWordDetail,
       Header,
       PopAccountList,
       PopComList,
@@ -215,6 +218,10 @@
 
     // 方法集合
     methods: {
+      // 点击词云详情中的词-回调
+      doWordCloud (row) {
+        this.doShowMore('visitList', '年度信访总量-来访', row);
+      },
       // 点击账号列表中的-待办数量-回调
       daibanEvent (row) {
         this.doShowMore('visitList', '年度信访总量-来访', row);
@@ -236,7 +243,7 @@
       doSearch() {},
       // 词云item - click
       wordClick (word) {
-        this.doShowMore('visitList', '年度信访总量-来访', {word: word});
+        this.doShowMore('hotWordDetail', '热点词云', {word: word});
       },
       // 地图对应加载的数据
       mapInit () {

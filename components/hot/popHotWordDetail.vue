@@ -1,12 +1,12 @@
 <template>
   <div class="com_more_pop_box">
     <div class="com_more_pop_header_box clearfix">
-      <div class="com_left marR10 title">统计条件:</div>
+      <div class="com_left marB10 marR10 title">统计条件:</div>
 
 
-      <el-button class="com_left" :type="search.type === 'week' ? 'success' : 'primary'" size="small" @click="doSearch('week')">按周</el-button>
-      <el-button class="com_left" :type="search.type === 'month' ? 'success' : 'primary'" size="small" @click="doSearch('month')">按月</el-button>
-      <el-button class="com_left" :type="search.type === 'year' ? 'success' : 'primary'" size="small" @click="doSearch('year')">按年</el-button>
+      <el-button class="com_left marB10" :type="search.type === 'week' ? 'success' : 'primary'" size="small" @click="doSearch('week')">按周</el-button>
+      <el-button class="com_left marB10" :type="search.type === 'month' ? 'success' : 'primary'" size="small" @click="doSearch('month')">按月</el-button>
+      <el-button class="com_left marB10" :type="search.type === 'year' ? 'success' : 'primary'" size="small" @click="doSearch('year')">按年</el-button>
 
     </div>
     <div class="com_more_pop_body_box clearfix">
@@ -19,7 +19,7 @@
         />
       </div>
 
-      <div class="list_box">
+      <div v-show="false" class="list_box">
         <h2 class="title">快速增长速度关键警示</h2>
         <div class="con">
           <dl>
@@ -186,10 +186,11 @@
 
       // 词云的点击回调方法
       doWordCloud (item) {
-        if (item && item.name) {
-          this.curWordCloudKey = item.name
-          this.loadList()
-        }
+        //if (item && item.name) {
+        //  this.curWordCloudKey = item.name
+        //  this.loadList()
+        //}
+        this.$emit('doWordCloud', item);
       },
 
       // 词云对应的列表数据
@@ -239,7 +240,7 @@
 <style lang='scss' scoped>
   .com_more_pop_body_box {
     .wordCloud_box {
-      width: 50%;
+      width: 100%;
       height: 300px;
       float: left;
     }
