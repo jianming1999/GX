@@ -3,9 +3,9 @@
 > vue
 
 ## GIT commit 
-### step1: GIT 拉取 =>  git pull
-### step2：GIT 提交 =>  git add . && git commit -m 'update xxxx'
-### step3：Git -> GIT 推送  => git push
+### step1: GIT 拉取 =>  CMD: git pull
+### step2：GIT 提交 =>  CMD: git add . && git commit -m 'update xxxx'
+### step3：Git -> GIT 推送  => CMD: git push
 
 ## 启动
 ### step1: cd 项目目录
