@@ -249,6 +249,7 @@ li { list-style: none;}
 .el-table--border::after, .el-table--group::after, .el-table::before{background-color:transparent;}
 .el-dialog, .el-pager li{background: rgba(0, 60, 100, 0.9);color:#409EFF;}
 .el-pager li.active{color:#eaf1ff;}
+.el-pagination{text-align:right;}
 .el-pagination .btn-next, .el-pagination .btn-prev,.el-pagination button:disabled,.el-pagination .btn-next, .el-pagination .el-pager li.btn-quicknext, .el-pager li.btn-quickprev,.btn-prev{background:transparent;color:#409EFF}
 .el-table thead{color: #4fdafc;background: #0c51a5;}
 .com_more_pop_header_box {
