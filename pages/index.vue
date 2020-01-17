@@ -12,27 +12,27 @@
 
     <div class="pages_hot_pop_box pages_hot_left_box pages_hot_left1_box">
       <div class="tit_box">
-        <span class="t_l dot"></span><i class="t_c">年度信访总量</i><span class="com_more" @click="doShowMore('hotLeft1')">更多</span><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">年度信访总量</i><span class="com_more" @click="doShowMore('hotLeft1', '年度信访总量')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box">
         
-        <div id="hotLeft1" @dblclick="doShowMore('hotLeft1')" class="show_map"></div>
+        <div id="hotLeft1" @dblclick="doShowMore('hotLeft1', '年度信访总量')" class="show_map"></div>
       </div>
     </div>
     <div class="pages_hot_pop_box pages_hot_left_box pages_hot_left2_box">
       <div class="tit_box">
-        <span class="t_l dot"></span><i class="t_c">年度信访量同比</i><span class="com_more" @click="doShowMore('hotLeft2')">更多</span><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">年度信访量同比</i><span class="com_more" @click="doShowMore('hotLeft2', '年度信访量同比')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box">
-        <div id="hotLeft2" @dblclick="doShowMore('hotLeft2')" class="show_map"></div>
+        <div id="hotLeft2" @dblclick="doShowMore('hotLeft2', '年度信访量同比')" class="show_map"></div>
       </div>
     </div>
     <div class="pages_hot_pop_box pages_hot_left_box pages_hot_left3_box">
       <div class="tit_box">
-        <span class="t_l dot"></span><i class="t_c">年度重复集体访</i><span class="com_more" @click="doShowMore('hotLeft3')">更多</span><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">全区接入单位人员占比</i><span class="com_more" @click="doShowMore('hotLeft3', '全区接入单位人员占比')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box">
-        <div id="hotLeft3" @dblclick="doShowMore('hotLeft3')" class="show_map"></div>
+        <div id="hotLeft3" @dblclick="doShowMore('hotLeft3', '全区接入单位人员占比')" class="show_map"></div>
       </div>
     </div>
 
@@ -47,9 +47,9 @@
 
     <div class="pages_hot_pop_box pages_hot_right_box pages_hot_right2_box">
       <div class="tit_box">
-        <span class="t_l dot"></span><i class="t_c">红黄灯情况</i><span class="com_more" @click="doShowMore('visitList')">更多</span><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">红黄灯情况</i><span class="com_more" @click="doShowMore('visitList', '年度信访总量-来访')">更多</span><span class="t_r"></span>
       </div>
-      <div class="con_box clearfix" @dblclick="doShowMore('visitList')" @click="doShowMore('visitList')">
+      <div class="con_box clearfix" @dblclick="doShowMore('年度信访总量-来访')" @click="doShowMore('visitList', '年度信访总量-来访')">
         
         <PopHotRight3></PopHotRight3>
         <!--
@@ -61,7 +61,7 @@
 
     <div class="pages_hot_pop_box pages_hot_right_box pages_hot_right3_box">
       <div class="tit_box">
-        <span class="t_l dot"></span><i class="t_c">热点词云</i><span class="com_more" @click="doShowMore('hotRight2')">更多</span><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">热点词云</i><span class="com_more" @click="doShowMore('hotRight2', '热点词云')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box">
         
@@ -77,14 +77,14 @@
 
     <div class="pages_hot_pop_box pages_hot_bottom_box pages_hot_bottom1_boxx">
       <div class="tit_box">
-        <span class="t_l dot"></span><i class="t_c">考核四率统计</i><span class="com_more" @click="doShowMore('hotBottom1')">更多</span><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">考核四率统计</i><span class="com_more" @click="doShowMore('hotBottom1', '考核四率统计')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box clearfix">
         
-        <div id="hotBottom1_1" @click="doShowMore('hotBottom1')" @dblclick="doShowMore('hotBottom1')" class="show_map"></div>
-        <div id="hotBottom1_2" @click="doShowMore('hotBottom1')" @dblclick="doShowMore('hotBottom1')" class="show_map"></div>
-        <div id="hotBottom1_3" @click="doShowMore('hotBottom1')" @dblclick="doShowMore('hotBottom1')" class="show_map"></div>
-        <div id="hotBottom1_4" @click="doShowMore('hotBottom1')" @dblclick="doShowMore('hotBottom1')" class="show_map"></div>
+        <div id="hotBottom1_1" @click="doShowMore('hotBottom1', '考核四率统计')" @dblclick="doShowMore('hotBottom1', '考核四率统计')" class="show_map"></div>
+        <div id="hotBottom1_2" @click="doShowMore('hotBottom1', '考核四率统计')" @dblclick="doShowMore('hotBottom1', '考核四率统计')" class="show_map"></div>
+        <div id="hotBottom1_3" @click="doShowMore('hotBottom1', '考核四率统计')" @dblclick="doShowMore('hotBottom1', '考核四率统计')" class="show_map"></div>
+        <div id="hotBottom1_4" @click="doShowMore('hotBottom1','考核四率统计')" @dblclick="doShowMore('hotBottom1', '考核四率统计')" class="show_map"></div>
       </div>
     </div>
     <!-- :width="dialogWidth" -->
@@ -94,7 +94,26 @@
       :close-on-click-modal="false"
       :before-close="moreBeforeClose"
       :visible.sync="more.visible">
-      <div slot="title" class="el-dialog__title"><i class="dot"></i>{{more.title}}</div>
+      <Header slot="beforeHeader"></Header>
+      <div slot="title" class="el-dialog__title">        
+        <i class="dot"></i>{{more.title}}
+
+        <el-button v-if="more.type === 'visitList'" class="com_right marR30" type="primary" size="small">下载</el-button>
+        <template v-if="more.type === 'comList'">
+          <el-button class="com_right marR30" type="primary" size="small" @click="doSearch">查询</el-button>
+          <el-select class="com_right marR10 w140px" v-model="search.type" placeholder="信访单位" clearable>
+            <el-option
+              v-for="item in typeOptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+
+          
+        </template>
+      </div>
+
       <div>
         <PopHotLeft1 v-if="more.type === 'hotLeft1'"></PopHotLeft1>
         <PopHotLeft2 v-if="more.type === 'hotLeft2'"></PopHotLeft2>
@@ -103,6 +122,9 @@
         <PopHotRight2 v-if="more.type === 'hotRight2'"></PopHotRight2>
         <PopHotRight3 v-if="more.type === 'hotRight3'"></PopHotRight3>
         <PopHotBottom1 v-if="more.type === 'hotBottom1'"></PopHotBottom1>
+        <PopVisitList v-if="more.type === 'visitList'"></PopVisitList>
+        <PopComList v-if="more.type === 'comList'" @accountEvent="accountEvent"></PopComList>
+        <PopAccountList v-if="more.type === 'accountList'" @daibanEvent="daibanEvent"></PopAccountList>
       </div>
     </el-dialog>
   </div>
@@ -124,6 +146,10 @@
   import PopHotRight2 from '~/components/hot/popHotRight2.vue'
   import PopHotRight3 from '~/components/hot/popHotRight3.vue'
   import PopHotBottom1 from '~/components/hot/popHotBottom1.vue'
+  import PopAccountList from '~/components/hot/popAccountList.vue'
+  import PopComList from '~/components/hot/popComList.vue'
+  import PopVisitList from '~/components/hot/popVisitList.vue'
+  import Header from '~/components/Header.vue'
 
   export default {
     components: {
@@ -134,11 +160,21 @@
       PopHotRight1,
       PopHotRight2,
       PopHotRight3,
-      PopHotBottom1
+      PopHotBottom1,
+      Header,
+      PopAccountList,
+      PopComList,
+      PopVisitList
     },
 
     data () {
       return {
+        // accountList弹出层-信访形式
+        typeOptions: [
+          {value: 1, label: '直属单位'}
+        ],
+        // accountList弹出层
+        search: this.clearSearchValue(), // 搜索条件
         visitNum: '00000000', // 年度信访量
         visitPer: 0, // 年度信访量 - 同比上升
         globalObj: null, // 地图对象
@@ -159,8 +195,6 @@
     created () {
       this.$store.dispatch('getItemBase', {curTitle: this.headOptions.tit})
     },
-
-    // 方法集合
     mounted () {
       // 处理地图高度
       const getMapH = $('.wrap').width()
@@ -181,9 +215,28 @@
 
     // 方法集合
     methods: {
+      // 点击账号列表中的-待办数量-回调
+      daibanEvent (row) {
+        this.doShowMore('visitList', '年度信访总量-来访', row);
+      },
+      // 点击自治区接入单位中的-账号数字-回调
+      accountEvent (row) {
+        this.doShowMore('accountList', '账号列表[ 南宁市信访局 ]', row);
+      },
+      // 搜索参数
+      clearSearchValue () {
+        const obj = {
+          area: [],
+          sYear: '',
+          eYear: '',
+          type: ''
+        }
+        return obj
+      },
+      doSearch() {},
       // 词云item - click
       wordClick (word) {
-        this.doShowMore('visitList', {word: word});
+        this.doShowMore('visitList', '年度信访总量-来访', {word: word});
       },
       // 地图对应加载的数据
       mapInit () {
@@ -400,8 +453,12 @@
           console.log(params);
           if(params.seriesName === '考核四率统计'){
             return;
+          }else if(params.seriesName === '全区接入单位人员占比'){
+            self.doShowMore('comList', '自治区接入单位-地市信访局', params);
+          }else{
+            self.doShowMore('visitList', '年度信访总量-来访', params);  
           }
-          self.doShowMore('visitList', params);
+          
           
         });
         this.myChartList.push(obj)
@@ -501,7 +558,7 @@
             right: '3%',
             top: '30%',
             bottom: '3%',
-            data: ['区直单位', '地市信访', '市直单位'],
+            data: ['区直单位[202/268]', '地市信访[14/300]', '市直单位[1305/1591]', '县区信访[117/707]', '县直单位[5567/5995]', '县以下单位[5567/5995]'],
             itemWidth: 10,
             itemHeight: 10,
             textStyle: {
@@ -510,13 +567,13 @@
           },
           series : [
             {
-              name: '年度重复集体访',
+              name: '全区接入单位人员占比',
               type: 'pie',
-              center: ['40%', '50%'],
+              center: ['20%', '50%'],
               label: {
                 normal: {
                   position: 'inside',
-                  formatter: '{c}\n[{d}%]',
+                  formatter: '{d}%', //${c} \n[{d}%]
                   textStyle: {
                     fontSize: 10
                   },
@@ -533,21 +590,39 @@
                   itemStyle: {
                     color: '#fea21f'
                   },
-                  name: '区直单位',
+                  name: '区直单位[202/268]',
                   value: 128
                 },
                 {
                   itemStyle: {
                     color: '#0666e8'
                   },
-                  name: '地市信访',
+                  name: '地市信访[14/300]',
                   value: 120
                 },
                 {
                   itemStyle: {
                     color: '#3eb177'
                   },
-                  name: '市直单位',
+                  name: '市直单位[1305/1591]',
+                  value: 45
+                },{
+                  itemStyle: {
+                    color: '#3ecc77'
+                  },
+                  name: '县区信访[117/707]',
+                  value: 45
+                },{
+                  itemStyle: {
+                    color: '#ccb177'
+                  },
+                  name: '县直单位[5567/5995]',
+                  value: 45
+                },{
+                  itemStyle: {
+                    color: '#3eff77'
+                  },
+                  name: '县以下单位[5567/5995]',
                   value: 45
                 }
               ],
@@ -1126,14 +1201,19 @@
         // 渲染地图
         common.loadColumnMap(obj4, this.getMyChartList)
       },
-
-      // 点击more弹框
-      doShowMore (type, params) {
-        // this.more.visible = true
-        // this.more.type = type
-        // this.more.title = tit
-        this.$router.push({path: `/${type}`, params: params});
+      doShowMore (type, tit, params) {
+        this.more.visible = true
+        this.more.type = type
+        this.more.title = tit
+        this.more.params = params
       },
+      // 点击more弹框
+      // doShowMore (type, params) {
+      //   // this.more.visible = true
+      //   // this.more.type = type
+      //   // this.more.title = tit
+      //   this.$router.push({path: `/${type}`, params: params});
+      // },
 
       // more弹框对象
       clearMoreValue () {

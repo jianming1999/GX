@@ -1,12 +1,15 @@
 <template>
   <div class="header">
     
-    <ul class="nav_box clearfix" @mouseenter="toggleMenu()" @mouseleave="toggleMenu()">
+    <ul class="nav_box clearfix">
       <nuxt-link tag="li" :to="{ name: 'index' }" :class="curMenuUrl === 'index' ? 'focus' : ''">
+        <i class="t">首页</i>
+        <span class="m"></span>
+      </nuxt-link>
+      <nuxt-link tag="li" :to="{ name: 'index' }" class="focus">
         <i class="t">热点模型</i>
         <span class="m"></span>
       </nuxt-link>
-      <div v-show="menuVisible">
       <nuxt-link tag="li" :to="{ name: 'warn' }" :class="curMenuUrl === 'warn' ? 'focus' : ''">
         <i class="t">预警信息</i>
         <span class="m"></span>
@@ -27,7 +30,6 @@
         <i class="t">形式研判</i>
         <span class="m"></span>
       </nuxt-link>
-      </div>
     </ul>
     <div class="header_r">
     <a href="#">区直单位</a> <a href="#">地市桌面</a><span class="time_tit">2022年2月23日</span>
@@ -65,7 +67,7 @@
     border-bottom: 1px solid #1561a4;
     background-size: auto 80px;
     height:81px;
-    ul{width:11%;height:auto;opacity:0.9;position:relative;
+    ul{width:11%;opacity:0.9;position:relative;
     top:30px; z-index:1;
     position: absolute;
       li{
@@ -91,12 +93,44 @@
     margin: 0 10px;
      background:#081b5b;
      display:inline-block;
+     transition: all 0.5s ease;
+     height: 34px;
+     overflow: hidden;
+      transition: height 0.5s ease;
+      -webkit-transition: height 0.5s ease;
+      -moz-transition: height 0.5s ease;
+      -ms-transition: height 0.5s ease;
+      -o-transition: height 0.5s ease;
+      &:hover {
+        height: 222px
+      }
      li {
       color: #4fd9fc;
       font-size:18px;
       text-align: center;
       white-space: nowrap;
       cursor: pointer;
+      transition: all 0.5s ease;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      &:hover {
+          background:#10469b;
+          background-size:auto 60px;
+      }  
+      &.focus {
+        background:＃10469b;
+        background-size: auto 60px;
+      }
+      &.focus, &:hover {
+        transform:scaleX(1);
+        -webkit-transform:scaleX(1);
+        -moz-transform:scaleX(1);
+        -ms-transform:scaleX(1);
+        -o-transform:scaleX(1);
+      }
+
       .t {
         white-space: nowrap;
         overflow: hidden;
@@ -116,35 +150,9 @@
         -webkit-transform:scaleX(0);
         -moz-transform:scaleX(0);
         -ms-transform:scaleX(0);
-        -o-transform:scaleX(0);
-        transition: all 0.5s ease;
-        -webkit-transition: all 0.5s ease;
-        -moz-transition: all 0.5s ease;
-        -ms-transition: all 0.5s ease;
-        -o-transition: all 0.5s ease;
+        -o-transform:scaleX(0);        
       }
-
-      &:hover {
-        .m {
-          background:#10469b;
-          background-size:auto 60px;
-        }
-      }
-      &.focus {
-        .m {
-          background:＃10469b;
-          background-size: auto 60px;
-        }
-      }
-      &.focus, &:hover {
-        .m {
-          transform:scaleX(1);
-          -webkit-transform:scaleX(1);
-          -moz-transform:scaleX(1);
-          -ms-transform:scaleX(1);
-          -o-transform:scaleX(1);
-        }
-      }
+      
     }
   }
 
