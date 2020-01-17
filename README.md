@@ -7,6 +7,11 @@
 ### step2：GIT 提交
 ### step3：Git -> GIT 推送
 
+## 启动
+### step1: cd 项目目录
+### step2: npm run dev
+### step3: 浏览器打开 http://localhost:3080/gx/
+
 ## Build Setup
 
 ``` bash
