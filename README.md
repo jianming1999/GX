@@ -1,4 +1,4 @@
-# GX - update
+# GX - update 
 
 > vue
 
