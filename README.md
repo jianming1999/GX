@@ -2,6 +2,11 @@
 
 > vue
 
+## GIT commit 
+### step1: GIT 拉取
+### step2：GIT 提交
+### step3：Git -> GIT 推送
+
 ## Build Setup
 
 ``` bash
