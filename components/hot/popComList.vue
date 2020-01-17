@@ -1,21 +1,5 @@
 <template>
-  <div class="com_more_pop_box">
-    <div class="com_more_pop_header_box clearfix">
-      <div class="com_left marR10 title"><i class="dot"></i>自治区接入单位-地市信访局</div>
 
-      <el-select class="com_left marR10 w140px" v-model="search.type" placeholder="信访单位" clearable>
-        <el-option
-          v-for="item in typeOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-        </el-option>
-      </el-select>
-
-      <el-button class="com_left marR10" type="primary" size="small" @click="doSearch">查询</el-button>
-
-    </div>
-    <div class="com_more_pop_body_box clearfix">
       <div>
       	<el-table
         stripe
@@ -63,8 +47,6 @@
 		</el-pagination>
 		</div>
       </div>
-    </div>
-  </div>
 </template>
 
 <script>

@@ -80,7 +80,7 @@
       width:30%;font-size:18px;
        text-align:right;
        position:relative;
-       top:30px;
+       top:35px;
        z-index:10;
        color: #92d2ff;
        float:right;

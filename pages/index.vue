@@ -571,11 +571,11 @@
             formatter: "{b} {c} [{d}%]"
           },
           legend: {
-            type: 'scroll',
+            // type: 'scroll',
             orient: 'vertical',
             right: '3%',
-            top: '30%',
-            bottom: '3%',
+            top: '3%',
+            // bottom: '3%',
             data: ['区直单位[202/268]', '地市信访[14/300]', '市直单位[1305/1591]', '县区信访[117/707]', '县直单位[5567/5995]', '县以下单位[5567/5995]'],
             itemWidth: 10,
             itemHeight: 10,
@@ -587,7 +587,7 @@
             {
               name: '全区接入单位人员占比',
               type: 'pie',
-              center: ['20%', '50%'],
+              center: ['25%', '50%'],
               label: {
                 normal: {
                   position: 'inside',

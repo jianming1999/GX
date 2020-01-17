@@ -1,12 +1,5 @@
 <template>
-  <div class="com_more_pop_box">
-    <div class="com_more_pop_header_box clearfix">
-      <div class="com_left marR10 title"><i class="dot"></i>年度信访总量-来访</div>
 
-      <el-button class="com_right marR10" type="primary" size="small" @click="doSearch">下载</el-button>
-
-    </div>
-    <div class="com_more_pop_body_box clearfix">
       <div>
       	<el-table
         stripe
@@ -50,16 +43,14 @@
 	      </el-table-column>
 	    </el-table>
 	    <div class="page-box" v-if="tableData.length">
-      	<el-pagination
-		  :page-size="20"
-		  :pager-count="11"
-		  layout="prev, pager, next"
-		  :total="1000">
-		</el-pagination>
+	      	<el-pagination
+			  :page-size="20"
+			  :pager-count="11"
+			  layout="prev, pager, next"
+			  :total="1000">
+			</el-pagination>
 		</div>
       </div>
-    </div>
-  </div>
 </template>
 
 <script>
