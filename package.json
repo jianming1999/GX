@@ -5,13 +5,15 @@
   "author": "htmlx.club",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
-    "build": "nuxt build",
-    "start": "cross-env NODE_ENV=production node server/index.js",
-    "generate": "nuxt generate",
+    "dev": "npm run cpTools && cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "npm run cpTools && nuxt build",
+    "start": "npm run cpTools && cross-env NODE_ENV=production node server/index.js",
+    "generate": "npm run cpTools && nuxt generate",
     "tar": "rm -rf web.tar && cd dist && tar -cvf ../web.tar ./**/* ./*",
     "sendtar": "scp web.tar root@120.77.253.176:/usr/share/nginx/html/gx",
-    "exectar": "ssh root@120.77.253.176 'cd /usr/share/nginx/html/gx; tar -xvf web.tar'"
+    "exectar": "ssh root@120.77.253.176 'cd /usr/share/nginx/html/gx; tar -xvf web.tar'",
+    "publish": "npm run generate && npm run tar && npm run sendtar && npm run exectar",
+    "cpTools": "cp -rf tools/element-ui  node_modules/"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.8.0",
