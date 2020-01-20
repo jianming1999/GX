@@ -3,13 +3,13 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _3e753502 = () => interopDefault(import('../pages/accountList/index.vue' /* webpackChunkName: "pages/accountList/index" */))
-const _2b9a3094 = () => interopDefault(import('../pages/company/index.vue' /* webpackChunkName: "pages/company/index" */))
-const _680c7b53 = () => interopDefault(import('../pages/guide/index.vue' /* webpackChunkName: "pages/guide/index" */))
-const _19912b68 = () => interopDefault(import('../pages/judged/index.vue' /* webpackChunkName: "pages/judged/index" */))
-const _0bfce384 = () => interopDefault(import('../pages/oetitioners/index.vue' /* webpackChunkName: "pages/oetitioners/index" */))
-const _920ba336 = () => interopDefault(import('../pages/warn/index.vue' /* webpackChunkName: "pages/warn/index" */))
-const _0e2438b4 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _787fc219 = () => interopDefault(import('../pages/accountList/index.vue' /* webpackChunkName: "pages/accountList/index" */))
+const _462ce12b = () => interopDefault(import('../pages/company/index.vue' /* webpackChunkName: "pages/company/index" */))
+const _281f34ac = () => interopDefault(import('../pages/guide/index.vue' /* webpackChunkName: "pages/guide/index" */))
+const _285e6a56 = () => interopDefault(import('../pages/judged/index.vue' /* webpackChunkName: "pages/judged/index" */))
+const _340c1b55 = () => interopDefault(import('../pages/oetitioners/index.vue' /* webpackChunkName: "pages/oetitioners/index" */))
+const _1e541d2e = () => interopDefault(import('../pages/warn/index.vue' /* webpackChunkName: "pages/warn/index" */))
+const _074a1b3d = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 Vue.use(Router)
 
@@ -22,31 +22,31 @@ export const routerOptions = {
 
   routes: [{
     path: "/accountList",
-    component: _3e753502,
+    component: _787fc219,
     name: "accountList"
   }, {
     path: "/company",
-    component: _2b9a3094,
+    component: _462ce12b,
     name: "company"
   }, {
     path: "/guide",
-    component: _680c7b53,
+    component: _281f34ac,
     name: "guide"
   }, {
     path: "/judged",
-    component: _19912b68,
+    component: _285e6a56,
     name: "judged"
   }, {
     path: "/oetitioners",
-    component: _0bfce384,
+    component: _340c1b55,
     name: "oetitioners"
   }, {
     path: "/warn",
-    component: _920ba336,
+    component: _1e541d2e,
     name: "warn"
   }, {
     path: "/",
-    component: _0e2438b4,
+    component: _074a1b3d,
     name: "index"
   }],
 

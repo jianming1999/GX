@@ -1,6 +1,5 @@
 <template>
-  <div class="header">
-    
+  <div class="header">    
     <ul class="nav_box clearfix">
       <nuxt-link tag="li" :to="{ name: 'index' }" :class="curMenuUrl === 'index' ? 'focus' : ''">
         <i class="t">首页</i>
@@ -32,7 +31,7 @@
       </nuxt-link>
     </ul>
     <div class="header_r">
-    <a href="#">区直单位</a> <a href="#">地市桌面</a><span class="time_tit">2022年2月23日</span>
+    <i class="arrow_l"></i><a href="#">区直单位</a> <a href="#">地市桌面</a><i class="arrow_r"></i><span class="time_tit">2022年2月23日</span>
     </div>
   </div>
 </template>
@@ -67,17 +66,12 @@
     border-bottom: 1px solid #1561a4;
     background-size: auto 80px;
     height:81px;
-    ul{width:11%;opacity:0.9;position:relative;
-    top:30px; z-index:1;
-    position: absolute;
-      li{
-        padding-top: 5px;
-        padding-bottom: 5px;
-      }
+    ul{width:11%;opacity:0.9;position:relative;top:30px; z-index:1;position: absolute;line-height: 40px;height:auto;
+     
     }
 
     .header_r{
-      width:30%;font-size:18px;
+      width:50%;font-size:18px;
        text-align:right;
        position:relative;
        top:35px;
@@ -85,9 +79,35 @@
        color: #92d2ff;
        float:right;
        margin:0 12px;
-       a{color: #92d2ff;margin: 0 8px;border:1px solid #3772ba;padding:5px 15px;border-radius:2px;}
+       a{color: #92d2ff;margin: 0 8px;background: #3772ba;padding:5px 15px;border-radius:2px;}
        .time_tit{margin-left:15px;}
        }
+	  .arrow_l{
+    height:0;
+    width:0;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    border-color:transparent #3772ba transparent transparent;
+    border-style:solid dashed dashed dashed;
+    border-width:18px;
+	position: relative;
+	top:-7px;
+	right:-9px;
+}
+.arrow_r{
+    height:0;
+    width:0;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    border-color:transparent transparent transparent #3772ba;
+    border-style:solid dashed dashed dashed;
+    border-width:18px;
+	position: relative;
+	top:-7px;
+	left:-9px;
+}
   }
   .nav_box {
     margin: 0 10px;
@@ -105,8 +125,9 @@
         height: 222px
       }
      li {
+	  border-bottom: 1px solid #093d6a;
       color: #4fd9fc;
-      font-size:18px;
+      font-size:16px;
       text-align: center;
       white-space: nowrap;
       cursor: pointer;
