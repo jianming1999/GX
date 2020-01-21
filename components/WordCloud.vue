@@ -42,7 +42,9 @@
       sizeRange: {
         type: Array,
         //用来调整字的大小范围
-        default: [12, 35]
+        default: function () {
+          return [12, 35]
+        }
       }
     },
     data() {
