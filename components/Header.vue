@@ -1,5 +1,5 @@
 <template>
-  <div class="header">    
+  <div class="header" v-show="false">    
     <ul class="nav_box clearfix">
       <nuxt-link tag="li" :to="{ name: 'index' }" :class="curMenuUrl === 'index' ? 'focus' : ''">
         <i class="t">首页</i>
@@ -66,8 +66,16 @@
     border-bottom: 1px solid #1561a4;
     background-size: auto 80px;
     height:81px;
-    ul{width:11%;opacity:0.9;position:relative;top:30px; z-index:1;position: absolute;line-height: 40px;height:auto;
-     
+    ul{width:11%;opacity:0.9;position:relative;top:30px; z-index:1;position: absolute;line-height: 40px;height:40px;
+     overflow: hidden;
+      transition: height 0.5s ease;
+      -webkit-transition: height 0.5s ease;
+      -moz-transition: height 0.5s ease;
+      -ms-transition: height 0.5s ease;
+      -o-transition: height 0.5s ease;
+      &:hover {
+        height: 280px
+      }
     }
 
     .header_r{
@@ -115,15 +123,7 @@
      display:inline-block;
      transition: all 0.5s ease;
      height: 34px;
-     overflow: hidden;
-      transition: height 0.5s ease;
-      -webkit-transition: height 0.5s ease;
-      -moz-transition: height 0.5s ease;
-      -ms-transition: height 0.5s ease;
-      -o-transition: height 0.5s ease;
-      &:hover {
-        height: 222px
-      }
+     
      li {
 	  border-bottom: 1px solid #093d6a;
       color: #4fd9fc;

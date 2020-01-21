@@ -5,7 +5,7 @@
 </template>
 <style type="text/css">
 	.canvas_box{text-align: center;}
-	.canvas_box .canvas{width: 300px;height:150px;}
+	.canvas_box .canvas{width: 100%;height:100%;}
 </style>
 <script>
 	import common from '~/assets/js/common.js'

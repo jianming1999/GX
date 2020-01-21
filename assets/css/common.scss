@@ -241,10 +241,6 @@ li { list-style: none;}
 .pages_hot_right3_box .con_box{
   padding: 10px 0;
 }
-.pages_hot_right3_box .con_box canvas {
-  height: 120px!important;
-  border-radius: 120px;
-}
 .el-table td, .el-table th.is-leaf{border:none;}
 .el-table--border::after, .el-table--group::after, .el-table::before{background-color:transparent;}
 .el-dialog, .el-pager li{background: rgba(0, 60, 100, 0.9);color:#409EFF;}
@@ -274,3 +270,5 @@ li { list-style: none;}
 .el-dialog .el-dialog__header{position:relative;}
 .el-dialog .el-dialog__header .el-dialog__headerbtn{top:2px;}
 .el-dialog__before-header{background: url(/gx/img/bg.jpg) no-repeat #0d0119;}
+.indexWordClass{top: 5%;bottom:2%;width:98%;}
+.indexWordClass canvas{height: 90%!important;width:100%;border-radius: 120px;}

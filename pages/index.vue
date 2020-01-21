@@ -69,6 +69,7 @@
           @callback="wordClick"
           v-if="wordCloudData.length"
           :data="wordCloudData"
+          className="indexWordClass"
           id="hotRight2"
         />
       </div>
@@ -572,10 +573,11 @@
           },
           legend: {
             // type: 'scroll',
-            orient: 'vertical',
+            // orient: 'vertical',
             right: '3%',
-            top: '3%',
-            // bottom: '3%',
+            top: '0',
+            left: '50%',
+            bottom: '0',
             data: ['区直单位[202/268]', '地市信访[14/300]', '市直单位[1305/1591]', '县区信访[117/707]', '县直单位[5567/5995]', '县以下单位[5567/5995]'],
             itemWidth: 10,
             itemHeight: 10,
