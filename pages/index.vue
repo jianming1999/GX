@@ -50,8 +50,8 @@
         <span class="t_l dot"></span><i class="t_c">红黄灯情况</i><span class="com_more" @click="doShowMore('visitList', '年度信访总量-来访')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box clearfix" @dblclick="doShowMore('年度信访总量-来访')" @click="doShowMore('visitList', '年度信访总量-来访')">
-        
-        <PopHotRight3></PopHotRight3>
+        <div id="hotRight3" class="show_map"></div>
+        <!-- <PopHotRight3></PopHotRight3> -->
         <!--
         <div id="hotRight3_1" class="show_map"></div>
         <div id="hotRight3_2" class="show_map"></div>
@@ -121,7 +121,7 @@
         <PopHotLeft3 v-if="more.type === 'hotLeft3'"></PopHotLeft3>
         <PopHotRight1 v-if="more.type === 'hotRight1'"></PopHotRight1>
         <PopHotRight2 v-if="more.type === 'hotRight2'"></PopHotRight2>
-        <PopHotRight3 v-if="more.type === 'hotRight3'"></PopHotRight3>
+        <!-- <PopHotRight3 v-if="more.type === 'hotRight3'"></PopHotRight3> -->
         <PopHotBottom1 v-if="more.type === 'hotBottom1'"></PopHotBottom1>
         <PopHotWordDetail v-if="more.type === 'hotWordDetail'" @doWordCloud="doWordCloud"></PopHotWordDetail>
         <PopVisitList v-if="more.type === 'visitList'"></PopVisitList>
@@ -138,6 +138,7 @@
   import $ from 'jquery'
   import apiPath from '~/assets/js/api.js'
   import common from '~/assets/js/common.js'
+  import redYellowLight from '~/assets/js/redYellowLight.js'
   import { Loading } from 'element-ui'
   import echarts from 'echarts'
   import WordCloud from '~/components/WordCloud.vue'
@@ -146,7 +147,7 @@
   import PopHotLeft3 from '~/components/hot/popHotLeft3.vue'
   import PopHotRight1 from '~/components/hot/popHotRight1.vue'
   import PopHotRight2 from '~/components/hot/popHotRight2.vue'
-  import PopHotRight3 from '~/components/hot/popHotRight3.vue'
+  // import PopHotRight3 from '~/components/hot/popHotRight3.vue'
   import PopHotBottom1 from '~/components/hot/popHotBottom1.vue'
   import PopHotWordDetail from '~/components/hot/popHotWordDetail.vue'
   import PopAccountList from '~/components/hot/popAccountList.vue'
@@ -162,7 +163,7 @@
       PopHotLeft3,
       PopHotRight1,
       PopHotRight2,
-      PopHotRight3,
+      // PopHotRight3,
       PopHotBottom1,
       PopHotWordDetail,
       Header,
@@ -252,7 +253,7 @@
         this.loadLeft2() // 加载年度信访量同比
         this.loadLeft3() // 加载年度重复集体访
         this.loadRight1() // 加载今日信访
-        //this.loadRight3() // 加载红黄灯情况
+        this.loadRight3() // 加载红黄灯情况
         this.loadBottom1() // 加载考核四率统计
       },
 
@@ -869,162 +870,19 @@
 
       // 红黄灯情况
       loadRight3 () {
-        const obj1 = {
-          eId: 'hotRight3_1',
-          tooltip : {
-            trigger: 'item',
-            formatter: '{b}：{c} [{d}%]'
-          },
-          calculable : true,
-          label: {
-            fontSize: 11
-          },
-          title: {
-            text: 280, // 这是总数
-            textStyle: {
-              color: '#fff',
-              fontSize: 12
-            },
-            textAlign: 'center',
-            left: '48%',
-            top: '44%',
-          },
-          series : [
-            {
-              name:'红黄灯情况',
-              type:'pie',
-              radius : this.radiusRight3,
-              center : ['50%', '50%'],
-              label: {
-                normal: {
-                  formatter: '{b|{b}}\n{c|{c}}',
-                  rich: {
-                    b: {
-                      align: 'center'
-                    },
-                    c: {
-                      align: 'center'
-                    }
-                  },
-                  textStyle: {
-                    fontSize: 10
-                  },
-                  show: true
-                }
-              },
-              labelLine: {
-                normal: {
-                  length: 12,
-                  length2: 2
-                }
-              },
-              data:[
-                {
-                  itemStyle: {
-                    color: '#dcca36'
-                  },
-                  value:50,
-                  name:'受理黄灯'
-                },
-                {
-                  itemStyle: {
-                    color: '#f35945'
-                  },
-                  value:100,
-                  name:'受理红灯'
-                },
-                {
-                  itemStyle: {
-                    color: '#11c0ff'
-                  },
-                  value:50,
-                  name:'及时受理'
-                }
-              ]
-            }
-          ]
-        }
-        // 渲染地图
-        common.loadColumnMap(obj1, this.getMyChartList)
-
-
-        const obj2 = {
-          eId: 'hotRight3_2',
-          tooltip : {
-            trigger: 'item',
-            formatter: '{b}：{c} [{d}%]'
-          },
-          calculable : true,
-          label: {
-            fontSize: 11
-          },
-          title: {
-            text: 180, // 这是总数
-            textStyle: {
-              color: '#fff',
-              fontSize: 12
-            },
-            textAlign: 'center',
-            left: '48%',
-            top: '44%',
-          },
-          series : [
-            {
-              name:'红黄灯情况',
-              type:'pie',
-              radius : this.radiusRight3,
-              center : ['50%', '50%'],
-              label: {
-                normal: {
-                  formatter: '{b|{b}}\n{c|{c}}',
-                  rich: {
-                    b: {
-                      align: 'center'
-                    },
-                    c: {
-                      align: 'center'
-                    }
-                  },
-                  textStyle: {
-                    fontSize: 10
-                  },
-                  show: true
-                }
-              },
-              labelLine: {
-                normal: {
-                  length: 12,
-                  length2: 2
-                }
-              },
-              data:[
-                {
-                  itemStyle: {
-                    color: '#f35945'
-                  },
-                  value:100,
-                  name:'办结红灯',
-                },
-                {
-                  itemStyle: {
-                    color: '#11c0ff'
-                  },
-                  value:20,
-                  name:'按期办结'
-                },
-                {
-                  itemStyle: {
-                    color: '#dcca36'
-                  },
-                  value:60,
-                  name:'办结黄灯'
-                }
-              ]
-            }
-          ]
-        }
-        // 渲染地图
-        common.loadColumnMap(obj2, this.getMyChartList)
+        redYellowLight.init({
+          eId: 'hotRight3',
+          // 今日过期
+          toDayTimout: 11,
+          // 受理黄灯 
+          acceptYellow: 222,
+          // 办结黄灯
+          completeYellow: 3,
+          // 受理红灯
+          acceptHot: 4,
+          // 办结红灯
+          completeHot: 5
+        })
       },
 
       // 考核四率统计

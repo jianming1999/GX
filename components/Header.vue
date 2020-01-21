@@ -1,5 +1,5 @@
 <template>
-  <div class="header" v-show="false">    
+  <div class="header">
     <ul class="nav_box clearfix">
       <nuxt-link tag="li" :to="{ name: 'index' }" :class="curMenuUrl === 'index' ? 'focus' : ''">
         <i class="t">首页</i>
