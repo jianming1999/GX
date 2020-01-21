@@ -299,8 +299,8 @@ export default {
 			canvas = document.createElement('canvas');
 			canvas.width = 600;
 			canvas.height = 300;
-			canvas.style.width = '300px';
-			canvas.style.height = '150px';
+			canvas.style.width = '100%';
+			// canvas.style.height = '150px';
 			boxEl.appendChild(canvas);
 		}
 		ctx = canvas.getContext('2d');

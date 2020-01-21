@@ -263,7 +263,7 @@
   .popHotLeft3_box {
     float: left;
     width: 50%;
-    height: 300px;
+    height: 600px;
   }
 
   @media screen and (max-width: 768px) {

@@ -19,7 +19,7 @@
         />
       </div>
 
-      <div v-show="false" class="list_box">
+      <div v-if="false" class="list_box">
         <h2 class="title">快速增长速度关键警示</h2>
         <div class="con">
           <dl>
@@ -241,7 +241,7 @@
   .com_more_pop_body_box {
     .wordCloud_box {
       width: 100%;
-      height: 300px;
+      height: 600px;
       float: left;
     }
     .list_box {

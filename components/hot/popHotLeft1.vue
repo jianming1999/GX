@@ -89,7 +89,7 @@
           legend: {
             data:['来信','来访','网信','复查复核'],
             itemWidth: 10,
-            itemHeight: 10,
+            itemHeight: 20,
             textStyle: {
               color: '#fff'
             },
@@ -199,6 +199,6 @@
 <style lang='scss' scoped>
   .popHotLeft1_box {
     width: 100%;
-    height: 300px;
+    height: 600px;
   }
 </style>
