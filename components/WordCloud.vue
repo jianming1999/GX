@@ -38,6 +38,11 @@
       callback: {
         type: Function,
         default: function () {}
+      },
+      sizeRange: {
+        type: Array,
+        //用来调整字的大小范围
+        default: [12, 35]
       }
     },
     data() {
@@ -69,9 +74,9 @@
               //用来调整词之间的距离
               gridSize: 10,
               //用来调整字的大小范围
-              sizeRange: [12, 35],
+              sizeRange: this.sizeRange,
               rotationRange: [0, 0],
-              drawOutOfBound: true,
+              drawOutOfBound: false,
               //随机生成字体颜色
               textStyle: {
                 normal: {

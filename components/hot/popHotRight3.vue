@@ -42,15 +42,15 @@
 			redYellowLight.init({
 				eId: 'canvas_box',
 				// 今日过期
-				toDayTimout: this.props.toDayTimout,
+				toDayTimout: this.toDayTimout,
 				// 受理黄灯 
-				acceptYellow: this.props.acceptYellow,
+				acceptYellow: this.acceptYellow,
 				// 办结黄灯
-				completeYellow: this.props.completeYellow,
+				completeYellow: this.completeYellow,
 				// 受理红灯
-				acceptHot: this.props.acceptHot,
+				acceptHot: this.acceptHot,
 				// 办结红灯
-				completeHot: this.props.completeHot
+				completeHot: this.completeHot
 			})
 		}
 	}
