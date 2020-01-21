@@ -242,7 +242,7 @@
   .com_more_pop_body_box {
     .wordCloud_box {
       width: 100%;
-      height: 600px;
+      height: 500px;
       float: left;
     }
     .list_box {

@@ -157,6 +157,6 @@
 <style lang='scss' scoped>
   .popHotLeft2_box {
     width: 100%;
-    height: 600px;
+    height: 500px;
   }
 </style>
