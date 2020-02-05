@@ -124,7 +124,8 @@
         <!-- <PopHotRight3 v-if="more.type === 'hotRight3'"></PopHotRight3> -->
         <PopHotBottom1 v-if="more.type === 'hotBottom1'"></PopHotBottom1>
         <PopHotWordDetail v-if="more.type === 'hotWordDetail'" @doWordCloud="doWordCloud"></PopHotWordDetail>
-        <PopVisitList v-if="more.type === 'visitList'"></PopVisitList>
+        <PopVisitList v-if="more.type === 'visitList'"  @visitItemClick="visitItemClick"></PopVisitList>
+        <PopVisitDetail v-if="more.type === 'visitDetail'"></PopVisitDetail>
         <PopComList v-if="more.type === 'comList'" @accountEvent="accountEvent"></PopComList>
         <PopAccountList v-if="more.type === 'accountList'" @daibanEvent="daibanEvent"></PopAccountList>
       </div>
@@ -153,6 +154,7 @@
   import PopAccountList from '~/components/hot/popAccountList.vue'
   import PopComList from '~/components/hot/popComList.vue'
   import PopVisitList from '~/components/hot/popVisitList.vue'
+  import PopVisitDetail from '~/components/hot/PopVisitDetail.vue'
   import Header from '~/components/Header.vue'
 
   export default {
@@ -169,7 +171,8 @@
       Header,
       PopAccountList,
       PopComList,
-      PopVisitList
+      PopVisitList,
+      PopVisitDetail
     },
 
     data () {
@@ -225,6 +228,10 @@
         this.doShowMore('visitList', '年度信访总量-来访', row);
       },
       // 点击账号列表中的-待办数量-回调
+      visitItemClick (row) {
+        this.doShowMore('visitDetail', '信访详情', row);
+      },
+      // 点击账号列表中的-待办数量-回调
       daibanEvent (row) {
         this.doShowMore('visitList', '年度信访总量-来访', row);
       },
@@ -245,7 +252,8 @@
       doSearch() {},
       // 词云item - click
       wordClick (word) {
-        this.doShowMore('hotWordDetail', '热点词云', {word: word});
+        // this.doShowMore('hotWordDetail', '热点词云', {word: word});
+        this.doShowMore('visitList', '热点词云', {word: word});
       },
       // 地图对应加载的数据
       mapInit () {

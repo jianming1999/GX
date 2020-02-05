@@ -2,4 +2,4 @@
 dist*
 node_modules/
 web.tar
-.nuxt
+.nuxt*

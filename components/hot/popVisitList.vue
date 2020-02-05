@@ -3,6 +3,7 @@
       <div>
       	<el-table
         stripe
+          @row-click="visitItemClick"
 	      :data="tableData"
 	      style="width: 100%">
 	      <el-table-column
@@ -108,6 +109,9 @@
       this.doSearch()
     },
     methods: {
+      visitItemClick(row){
+          this.$emit('visitItemClick', row);
+      },
       // 搜索参数
       clearSearchValue () {
         const obj = {
