@@ -1,11 +1,7 @@
 <template>
   <div class="header">
     <ul class="nav_box clearfix">
-      <nuxt-link tag="li" :to="{ name: 'index' }" :class="curMenuUrl === 'index' ? 'focus' : ''">
-        <i class="t">首页</i>
-        <span class="m"></span>
-      </nuxt-link>
-      <nuxt-link tag="li" :to="{ name: 'index' }" class="focus">
+      <nuxt-link tag="li" :to="{ name: 'index' }"  :class="curMenuUrl === 'index' ? 'focus' : ''">
         <i class="t">热点模型</i>
         <span class="m"></span>
       </nuxt-link>
@@ -74,7 +70,7 @@
       -ms-transition: height 0.5s ease;
       -o-transition: height 0.5s ease;
       &:hover {
-        height: 280px
+        height: 240px
       }
     }
 
@@ -141,7 +137,7 @@
           background-size:auto 60px;
       }  
       &.focus {
-        background:＃10469b;
+        background:#10469b;
         background-size: auto 60px;
       }
       &.focus, &:hover {

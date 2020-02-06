@@ -1,5 +1,5 @@
 <template>
-  <div style="text-align:center; padding: 10% 0; color:#4fd9fc">~成引导向空白页~</div>
+  <div class="deploy-text">正在开发中...~</div>
 </template>
 
 <script>

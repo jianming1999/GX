@@ -291,20 +291,17 @@ function init(options){
 }
 export default {
 	init: function init(options){
-		let boxEl = document.getElementById(options.eId),
-			canvasArray = boxEl.getElementsByTagName('canvas');
-		if(canvasArray.length > 0){
-			canvas = canvasArray[0];
-		}else{
-			canvas = document.createElement('canvas');
-			canvas.width = 600;
-			canvas.height = 300;
-			canvas.style.width = '100%';
-			// canvas.style.height = '150px';
-			boxEl.appendChild(canvas);
-		}
+		let boxEl = document.getElementById(options.eId);
+		boxEl.innerHTML = '';
+		canvas = document.createElement('canvas');
+		canvas.width = 600;
+		canvas.height = 300;
+		canvas.style.width = '100%';
+		// canvas.style.height = '150px';
+		boxEl.appendChild(canvas);
 		ctx = canvas.getContext('2d');
 		ctx.scale(2,2);
+		
 		curValMap = {cur1:0,cur2:0,cur3:0,cur4:0,cur5:0}, nowDt = new Date().getTime();
 		globalOption = Object.assign({
 			// 今日过期
