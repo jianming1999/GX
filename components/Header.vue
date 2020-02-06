@@ -1,31 +1,17 @@
 <template>
   <div class="header">
-    <ul class="nav_box clearfix">
-      <nuxt-link tag="li" :to="{ name: 'index' }"  :class="curMenuUrl === 'index' ? 'focus' : ''">
-        <i class="t">热点模型</i>
-        <span class="m"></span>
-      </nuxt-link>
-      <nuxt-link tag="li" :to="{ name: 'warn' }" :class="curMenuUrl === 'warn' ? 'focus' : ''">
-        <i class="t">预警信息</i>
-        <span class="m"></span>
-      </nuxt-link>
-      <nuxt-link tag="li" :to="{ name: 'guide' }" :class="curMenuUrl === 'guide' ? 'focus' : ''">
-        <i class="t">成引导向</i>
-        <span class="m"></span>
-      </nuxt-link>
-      <nuxt-link tag="li" :to="{ name: 'oetitioners' }" class="nav_tit_margin" :class="curMenuUrl === 'oetitioners' ? 'focus' : ''">
-        <i class="t">信访人像</i>
-        <span class="m"></span>
-      </nuxt-link>
-      <nuxt-link tag="li" :to="{ name: 'company' }" :class="curMenuUrl === 'company' ? 'focus' : ''">
-        <i class="t">单位画像</i>
-        <span class="m"></span>
-      </nuxt-link>
-      <nuxt-link tag="li" :to="{ name: 'judged' }" :class="curMenuUrl === 'judged' ? 'focus' : ''">
-        <i class="t">形式研判</i>
-        <span class="m"></span>
-      </nuxt-link>
-    </ul>
+      <ul class="nav_box clearfix">
+        <li>
+          <i class="t">{{curMenuTit}}</i>
+          <span class="m"></span>
+        </li>
+        <nuxt-link v-for="(nav,$index) in navList" :key="$index" tag="li" :to="{ name: nav.name }"  :class="curMenuUrl === nav.name ? 'focus' : ''">
+          <i class="t" @click="changeNavHeight(40)">{{nav.title}}</i>
+          <span class="m"></span>
+        </nuxt-link>
+        
+      </ul>
+    
     <div class="header_r">
     <i class="arrow_l"></i><a href="#">区直单位</a> <a href="#">地市桌面</a><i class="arrow_r"></i><span class="time_tit">2022年2月23日</span>
     </div>
@@ -37,7 +23,34 @@
   export default {
     data () {
       return {
-        menuVisible: false
+        menuVisible: false,
+        navBoxHeight: 40,
+        navList: [
+          {
+            name: 'index',
+            title: '热点模型'
+          },
+          {
+            name: 'warn',
+            title: '预警信息'
+          },
+          {
+            name: 'guide',
+            title: '成引导向'
+          },
+          {
+            name: 'oetitioners',
+            title: '信访人像'
+          },
+          {
+            name: 'company',
+            title: '单位画像'
+          },
+          {
+            name: 'judged',
+            title: '形式研判'
+          }
+        ]
       }
     },
     computed: {
@@ -45,10 +58,23 @@
           curMenuUrl: (state) => {
           return state.base.curMenuUrl
         }
-      })
+      }),
+      curMenuTit(){
+        let arr = this.navList.filter(item => {
+          return item.name === this.curMenuUrl
+        });
+        if(arr && arr.length){
+          return arr[0].title;
+        }else{
+          return '首页';
+        }
+      }
     },
     mounted () {},
     methods: {
+      changeNavHeight(ht){
+        this.navBoxHeight = ht;
+      },
       toggleMenu(){
         this.menuVisible = !this.menuVisible;
       }
@@ -70,7 +96,7 @@
       -ms-transition: height 0.5s ease;
       -o-transition: height 0.5s ease;
       &:hover {
-        height: 240px
+        height: 287px
       }
     }
 
@@ -113,6 +139,7 @@
 	left:-9px;
 }
   }
+  
   .nav_box {
     margin: 0 10px;
      background:#081b5b;

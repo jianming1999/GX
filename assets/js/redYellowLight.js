@@ -290,6 +290,7 @@ function init(options){
 	start();
 }
 export default {
+	isInit: false,
 	init: function init(options){
 		let boxEl = document.getElementById(options.eId);
 		boxEl.innerHTML = '';
@@ -314,7 +315,10 @@ export default {
 			acceptHot: 0,
 			// 办结红灯
 			completeHot: 0
-		}, options || {})
-		start();
+		}, options || {});
+		if(!this.isInit){
+			this.isInit= true;
+			start();
+		}
 	}
 }
