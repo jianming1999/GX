@@ -78,7 +78,7 @@
       width:50%;font-size:18px;
        text-align:right;
        position:relative;
-       top:35px;
+       top:20px;
        z-index:10;
        color: #92d2ff;
        float:right;
@@ -94,10 +94,11 @@
     line-height: 0;
     border-color:transparent #3772ba transparent transparent;
     border-style:solid dashed dashed dashed;
-    border-width:18px;
+    border-width:18px;	
 	position: relative;
-	top:-7px;
+	top:10px;
 	right:-9px;
+	display: inline-block;
 }
 .arrow_r{
     height:0;
@@ -109,10 +110,12 @@
     border-style:solid dashed dashed dashed;
     border-width:18px;
 	position: relative;
-	top:-7px;
+	top:10px;
 	left:-9px;
+	display: inline-block;
 }
-  }
+.round{width:50px;height:50px;border-radius:50px;}
+ 
   .nav_box {
     margin: 0 10px;
      background:#081b5b;
@@ -199,5 +202,5 @@
       }
     }
   }
-
+}
 </style>
