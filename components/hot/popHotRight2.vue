@@ -9,24 +9,25 @@
       <el-button class="com_left marB10" :type="search.type === 'year' ? 'success' : 'primary'" size="small" @click="doSearch('year')">按年</el-button>
 
     </div>
-    <div class="com_more_pop_body_box clearfix">
+    <div class="com_more_pop_body_box clearfix" style="position:relative;margin:0 auto;width:50%;">
       <div class="wordCloud_box">
         <word-cloud
+		  :sizeRange="[30, 50]"
           v-if="wordCloudData.length"
           :data="wordCloudData"
-          id="popHotRight2"
+          id="popHotRight2" 
           @callback="doWordCloud"
         />
       </div>
 
-      <div class="list_box">
+      <!-- <div class="list_box">
         <h2 class="title">快速增长速度关键警示</h2>
         <div class="con">
           <dl>
             <dd :key="key" v-for="(item, key) in kwList"><span class="kw" :class="item.num > 30 ? 'hig' : ''">{{curWordCloudKey}}</span>{{item.name}}</dd>
           </dl>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -253,6 +254,7 @@
         font-size: 18px;
         font-weight: normal;
       }
+	  .m_auto{position:relative;margin:0 auto;width:50%;}
       .con {
         padding: 2%;
         background: #0b317d;

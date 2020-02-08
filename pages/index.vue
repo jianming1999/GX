@@ -11,6 +11,8 @@
     <div id="globalMap" class="pages_hot_map_box"></div>
 
     <div class="pages_hot_pop_box pages_hot_left_box pages_hot_left1_box">
+		<em class="border_l"></em><em class="border_bl"></em> 
+		<em class="border_r"></em><em class="border_br"></em>
       <div class="tit_box">
         <span class="t_l dot"></span><i class="t_c">年度信访总量</i><span class="com_more" @click="doShowMore('hotLeft1', '年度信访总量')">更多</span><span class="t_r"></span>
       </div>
@@ -78,14 +80,14 @@
 
     <div class="pages_hot_pop_box pages_hot_bottom_box pages_hot_bottom1_boxx">
       <div class="tit_box">
-        <span class="t_l dot"></span><i class="t_c">考核四率统计</i><span class="com_more" @click="doShowMore('hotBottom1', '考核四率统计')">更多</span><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">考核五率统计</i><span class="com_more" @click="doShowMore('hotBottom1', '考核四率统计')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box clearfix">
         
-        <div id="hotBottom1_1" @click="doShowMore('hotBottom1', '考核四率统计')" @dblclick="doShowMore('hotBottom1', '考核四率统计')" class="show_map"></div>
-        <div id="hotBottom1_2" @click="doShowMore('hotBottom1', '考核四率统计')" @dblclick="doShowMore('hotBottom1', '考核四率统计')" class="show_map"></div>
-        <div id="hotBottom1_3" @click="doShowMore('hotBottom1', '考核四率统计')" @dblclick="doShowMore('hotBottom1', '考核四率统计')" class="show_map"></div>
-        <div id="hotBottom1_4" @click="doShowMore('hotBottom1','考核四率统计')" @dblclick="doShowMore('hotBottom1', '考核四率统计')" class="show_map"></div>
+        <div id="hotBottom1_1" @click="doShowMore('hotBottom1', '考核四率统计')" @dblclick="doShowMore('hotBottom1', '考核五率统计')" class="show_map"></div>
+        <div id="hotBottom1_2" @click="doShowMore('hotBottom1', '考核四率统计')" @dblclick="doShowMore('hotBottom1', '考核五率统计')" class="show_map"></div>
+        <div id="hotBottom1_3" @click="doShowMore('hotBottom1', '考核四率统计')" @dblclick="doShowMore('hotBottom1', '考核五率统计')" class="show_map"></div>
+        <div id="hotBottom1_4" @click="doShowMore('hotBottom1','考核四率统计')" @dblclick="doShowMore('hotBottom1', '考核五率统计')" class="show_map"></div>
       </div>
     </div>
     <!-- :width="dialogWidth" -->
@@ -892,9 +894,9 @@
         })
       },
 
-      // 考核四率统计
+      // 考核五率统计
       loadBottom1 () {
-        // 考核四率统计 - 信访受理率
+        // 考核五率统计 - 信访受理率
         const obj1 = {
           eId: 'hotBottom1_1',
           tooltip : {
@@ -902,7 +904,7 @@
           },
           series: [
             {
-              name: '考核四率统计',
+              name: '考核五率统计',
               type: 'gauge',
               radius: '85%',
               axisLine: {
@@ -946,7 +948,7 @@
         common.loadColumnMap(obj1, this.getMyChartList)
 
 
-        // 考核四率统计 - 按期办结率
+        // 考核五率统计 - 按期办结率
         const obj2 = {
           eId: 'hotBottom1_2',
           tooltip : {
@@ -954,7 +956,7 @@
           },
           series: [
             {
-              name: '考核四率统计',
+              name: '考核五率统计',
               type: 'gauge',
               radius: '85%',
               axisLine: {
@@ -993,7 +995,7 @@
         common.loadColumnMap(obj2, this.getMyChartList)
 
 
-        // 考核四率统计 - 信访满意率
+        // 考核五率统计 - 信访满意率
         const obj3 = {
           eId: 'hotBottom1_3',
           tooltip : {
@@ -1001,7 +1003,7 @@
           },
           series: [
             {
-              name: '考核四率统计',
+              name: '考核五率统计',
               type: 'gauge',
               radius: '85%',
               axisLine: {
@@ -1040,7 +1042,7 @@
         common.loadColumnMap(obj3, this.getMyChartList)
 
 
-        // 考核四率统计 - 信访参评率
+        // 考核五率统计 - 信访参评率
         const obj4 = {
           eId: 'hotBottom1_4',
           tooltip : {
@@ -1048,7 +1050,7 @@
           },
           series: [
             {
-              name: '考核四率统计',
+              name: '考核五率统计',
               type: 'gauge',
               radius: '85%',
               axisLine: {
@@ -1152,7 +1154,7 @@
     height: calc(96% - 81px);
     width: 98%;
     margin: 0 1%;
-    overflow: hidden;
+	
   }
   .pages_hot_map_box {
     position: absolute;
@@ -1162,6 +1164,11 @@
     width: 100%;
     height: 100%;
   }
+  .pages_hot_left1_box{position:relative;}
+  .border_l{height:5px;border-left:1px solid #007dff;position:absolute;bottom:6px;left:0;z-index: 1;}
+  .border_bl{width:5px;border-bottom:1px solid #007dff;position:absolute;bottom:5px;left:0;z-index: 1;}
+  .border_r{height:5px;border-right:1px solid #007dff;position:absolute;bottom:6px;right:0;z-index: 1;}
+  .border_br{width:5px;border-bottom:1px solid #007dff;position:absolute;bottom:5px;right:0;z-index: 1;}
   .pages_hot_visit_box {
     width: 100%;
     position: absolute;

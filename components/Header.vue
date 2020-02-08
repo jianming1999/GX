@@ -1,10 +1,7 @@
 <template>
   <div class="header">
       <ul class="nav_box clearfix">
-        <li>
-          <i class="t">{{curMenuTit}}</i>
-          <span class="m"></span>
-        </li>
+        
         <nuxt-link v-for="(nav,$index) in navList" :key="$index" tag="li" :to="{ name: nav.name }"  :class="curMenuUrl === nav.name ? 'focus' : ''">
           <i class="t" @click="changeNavHeight(40)">{{nav.title}}</i>
           <span class="m"></span>
@@ -13,7 +10,7 @@
       </ul>
     
     <div class="header_r">
-    <i class="arrow_l"></i><a href="#">区直单位</a> <a href="#">地市桌面</a><i class="arrow_r"></i><span class="time_tit">2022年2月23日</span>
+    <i class="arrow_l"></i><a href="#">区直单位</a> <a href="#">地市桌面</a><i class="arrow_r"></i><span class="time_tit">2022年2月23日 星期天</span>
     </div>
   </div>
 </template>
@@ -26,8 +23,12 @@
         menuVisible: false,
         navBoxHeight: 40,
         navList: [
+			{
+			  name: 'index',
+			  title: '首页'
+			},
           {
-            name: 'index',
+            name: 'hot',
             title: '热点模型'
           },
           {
