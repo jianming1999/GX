@@ -80,14 +80,14 @@
 
     <div class="pages_hot_pop_box pages_hot_bottom_box pages_hot_bottom1_boxx">
       <div class="tit_box">
-        <span class="t_l dot"></span><i class="t_c">考核五率统计</i><span class="com_more" @click="doShowMore('hotBottom1', '考核四率统计')">更多</span><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">考核五率统计</i><span class="com_more" @click="doShowMore('hotBottom1', '考核五率统计')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box clearfix">
         
-        <div id="hotBottom1_1" @click="doShowMore('hotBottom1', '考核四率统计')" @dblclick="doShowMore('hotBottom1', '考核五率统计')" class="show_map"></div>
-        <div id="hotBottom1_2" @click="doShowMore('hotBottom1', '考核四率统计')" @dblclick="doShowMore('hotBottom1', '考核五率统计')" class="show_map"></div>
-        <div id="hotBottom1_3" @click="doShowMore('hotBottom1', '考核四率统计')" @dblclick="doShowMore('hotBottom1', '考核五率统计')" class="show_map"></div>
-        <div id="hotBottom1_4" @click="doShowMore('hotBottom1','考核四率统计')" @dblclick="doShowMore('hotBottom1', '考核五率统计')" class="show_map"></div>
+        <div id="hotBottom1_1" @click="doShowMore('visitList', '信访受理率')" @dblclick="doShowMore('hotBottom1', '考核五率统计')" class="show_map"></div>
+        <div id="hotBottom1_2" @click="doShowMore('visitList', '按期办结率')" @dblclick="doShowMore('hotBottom1', '考核五率统计')" class="show_map"></div>
+        <div id="hotBottom1_3" @click="doShowMore('visitList', '信访满意率')" @dblclick="doShowMore('hotBottom1', '考核五率统计')" class="show_map"></div>
+        <div id="hotBottom1_4" @click="doShowMore('visitList','信访参评率')" @dblclick="doShowMore('hotBottom1', '考核五率统计')" class="show_map"></div>
       </div>
     </div>
     <!-- :width="dialogWidth" -->
@@ -103,8 +103,7 @@
 
         <el-button v-if="more.type === 'visitList'" class="com_right marR30" type="primary" size="small">下载</el-button>
         <template v-if="more.type === 'comList'">
-          <el-button class="com_right marR30" type="primary" size="small" @click="doSearch">查询</el-button>
-          <el-select class="com_right marR10 w140px" v-model="search.type" placeholder="信访单位" clearable>
+          <el-select class="com_right marR30 w140px" v-model="search.type" @change="comListSearch" placeholder="信访单位" clearable>
             <el-option
               v-for="item in typeOptions"
               :key="item.value"
@@ -179,11 +178,12 @@
 
     data () {
       return {
-        // accountList弹出层-信访形式
+        // comList弹出层-信访形式
         typeOptions: [
+          {value: 0, label: '信访单位'},
           {value: 1, label: '直属单位'}
         ],
-        // accountList弹出层
+        // comList弹出层
         search: this.clearSearchValue(), // 搜索条件
         visitNum: '00000000', // 年度信访量
         visitPer: 0, // 年度信访量 - 同比上升
@@ -254,7 +254,10 @@
         }
         return obj
       },
-      doSearch() {},
+      // comList select change event
+      comListSearch() {
+        this.$root.$emit('comListSearch');
+      },
       // 词云item - click
       wordClick (word) {
         // this.doShowMore('hotWordDetail', '热点词云', {word: word});

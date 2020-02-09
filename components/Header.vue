@@ -148,7 +148,7 @@
      background:#081b5b;
      display:inline-block;
      transition: all 0.5s ease;
-     height: 34px;
+     
      
      li {
 	  border-bottom: 1px solid #093d6a;

@@ -58,113 +58,109 @@
     props: {},
     data() {
       return {
-      	tableData: [{
-      		index: '1',
-	        comName: '南宁市信访局',
-	        comType: '地市信访局',
-	        tel: '0771-26133707',
-	        contact: '黄威铭',
-	        count: 25,
-	        lowCom: 25
-	      },{
-          index: '2',
-          comName: '南宁市信访局',
-          comType: '地市信访局',
-          tel: '0771-26133707',
-          contact: '黄威铭',
-          count: 25,
-          lowCom: 25
-        },{
-          index: '3',
-          comName: '南宁市信访局',
-          comType: '地市信访局',
-          tel: '0771-26133707',
-          contact: '黄威铭',
-          count: 25,
-          lowCom: 25
-        },{
-          index: '4',
-          comName: '南宁市信访局',
-          comType: '地市信访局',
-          tel: '0771-26133707',
-          contact: '黄威铭',
-          count: 25,
-          lowCom: 25
-        },{
-          index: '5',
-          comName: '南宁市信访局',
-          comType: '地市信访局',
-          tel: '0771-26133707',
-          contact: '黄威铭',
-          count: 25,
-          lowCom: 25
-        },{
-          index: '6',
-          comName: '南宁市信访局',
-          comType: '地市信访局',
-          tel: '0771-26133707',
-          contact: '黄威铭',
-          count: 25,
-          lowCom: 25
-        },{
-          index: '7',
-          comName: '南宁市信访局',
-          comType: '地市信访局',
-          tel: '0771-26133707',
-          contact: '黄威铭',
-          count: 25,
-          lowCom: 25
-        },{
-          index: '8',
-          comName: '南宁市信访局',
-          comType: '地市信访局',
-          tel: '0771-26133707',
-          contact: '黄威铭',
-          count: 25,
-          lowCom: 25
-        },{
-          index: '9',
-          comName: '南宁市信访局',
-          comType: '地市信访局',
-          tel: '0771-26133707',
-          contact: '黄威铭',
-          count: 25,
-          lowCom: 25
-        } ],
+      	tableData: [],
         areaDataList: [],
-        typeOptions: [], // 信访形式
-        search: this.clearSearchValue() // 搜索条件
+        typeOptions: [] // 信访形式
       }
     },
     created () {
       this.areaDataList = common.getAreaData()
       this.typeOptions = [
         {value: 1, label: '直属单位'}
-      ]
+      ];      
     },
     mounted() {
-      // 默认加载
+      let self = this;
+      this.$root.$on('comListSearch', () => {
+        console.log('comListSearch be trigger');
+        // 加载
+        self.doSearch()
+      });
+      // 加载
       this.doSearch()
     },
     methods: {
-      // 搜索参数
-      clearSearchValue () {
-        const obj = {
-          area: [],
-          sYear: '',
-          eYear: '',
-          type: ''
-        }
-        return obj
-      },
       
       // 查询
       doSearch () {
-        // 搜索参数和请求方法在这
-        console.log(this.search.area)
-        console.log(this.search.sYear)
-        console.log(this.search.eYear)
-        console.log(this.search.type)
+        this.tableData = [];
+        
+          this.tableData = [
+            {
+              index: '1',
+              comName: '南宁市信访局',
+              comType: '地市信访局',
+              tel: '0771-26133707',
+              contact: '黄威铭',
+              count: 25,
+              lowCom: 25
+            },{
+              index: '2',
+              comName: '南宁市信访局',
+              comType: '地市信访局',
+              tel: '0771-26133707',
+              contact: '黄威铭',
+              count: 25,
+              lowCom: 25
+            },{
+              index: '3',
+              comName: '南宁市信访局',
+              comType: '地市信访局',
+              tel: '0771-26133707',
+              contact: '黄威铭',
+              count: 25,
+              lowCom: 25
+            },{
+              index: '4',
+              comName: '南宁市信访局',
+              comType: '地市信访局',
+              tel: '0771-26133707',
+              contact: '黄威铭',
+              count: 25,
+              lowCom: 25
+            },{
+              index: '5',
+              comName: '南宁市信访局',
+              comType: '地市信访局',
+              tel: '0771-26133707',
+              contact: '黄威铭',
+              count: 25,
+              lowCom: 25
+            },{
+              index: '6',
+              comName: '南宁市信访局',
+              comType: '地市信访局',
+              tel: '0771-26133707',
+              contact: '黄威铭',
+              count: 25,
+              lowCom: 25
+            },{
+              index: '7',
+              comName: '南宁市信访局',
+              comType: '地市信访局',
+              tel: '0771-26133707',
+              contact: '黄威铭',
+              count: 25,
+              lowCom: 25
+            },{
+              index: '8',
+              comName: '南宁市信访局',
+              comType: '地市信访局',
+              tel: '0771-26133707',
+              contact: '黄威铭',
+              count: 25,
+              lowCom: 25
+            },{
+              index: '9',
+              comName: '南宁市信访局',
+              comType: '地市信访局',
+              tel: '0771-26133707',
+              contact: '黄威铭',
+              count: 25,
+              lowCom: 25
+            }
+          ];
+        
 
       },
       accountList(row, cell){

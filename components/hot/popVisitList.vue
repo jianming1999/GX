@@ -47,9 +47,12 @@
 	      	<el-pagination
 			  :page-size="20"
 			  :pager-count="11"
-			  layout="prev, pager, next"
+			  layout="prev, pager, next, slot"
 			  :total="1000">
+        <span style="color: #f30;margin-right: 20px;float:right;width: 200px;">572600批次 / 2881052人次</span>
 			</el-pagination>
+      
+
 		</div>
       </div>
 </template>

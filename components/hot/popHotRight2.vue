@@ -9,13 +9,13 @@
       <el-button class="com_left marB10" :type="search.type === 'year' ? 'success' : 'primary'" size="small" @click="doSearch('year')">按年</el-button>
 
     </div>
-    <div class="com_more_pop_body_box clearfix" style="position:relative;margin:0 auto;width:50%;">
+    <div class="com_more_pop_body_box clearfix" style="position:relative;margin:0 auto;width:100%;">
       <div class="wordCloud_box">
         <word-cloud
 		  :sizeRange="[30, 50]"
           v-if="wordCloudData.length"
           :data="wordCloudData"
-          id="popHotRight2" 
+          id="popHotRight2"
           @callback="doWordCloud"
         />
       </div>
@@ -240,7 +240,7 @@
 <style lang='scss' scoped>
   .com_more_pop_body_box {
     .wordCloud_box {
-      width: 50%;
+      width: 100%;
       height: 500px;
       float: left;
     }
