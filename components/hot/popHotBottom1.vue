@@ -26,14 +26,14 @@
 
     </div>
     <div class="com_more_pop_body_box clearfix">
-      <div id="PopHotBottom1_1" class="popHotBottom1_box"></div>
-      <div id="PopHotBottom1_2" class="popHotBottom1_box"></div>
-      <div id="PopHotBottom1_3" class="popHotBottom1_box"></div>
-      <div id="PopHotBottom1_4" class="popHotBottom1_box"></div>
-      <div id="PopHotBottom1_5" class="popHotBottom1_box"></div>
+      <div id="PopHotBottom1_1" @click="visitListEvent('信访受理率')" class="popHotBottom1_box"></div>
+      <div id="PopHotBottom1_2" @click="visitListEvent('按期办结率')" class="popHotBottom1_box"></div>
+      <div id="PopHotBottom1_3" @click="visitListEvent('信访满意率')" class="popHotBottom1_box"></div>
+      <div id="PopHotBottom1_4" @click="visitListEvent('信访参评率')" class="popHotBottom1_box"></div>
+      <div id="PopHotBottom1_5" @click="visitListEvent('责任授理率')" class="popHotBottom1_box"></div>
       <div id="PopHotBottom1_6" class="popHotBottom1_box"></div>
-      <div id="PopHotBottom1_7" class="popHotBottom1_box"></div>
-      <div id="PopHotBottom1_8" class="popHotBottom1_box"></div>
+      <div id="PopHotBottom1_7" @click="visitListEvent('责任满意率')" class="popHotBottom1_box"></div>
+      <div id="PopHotBottom1_8" @click="visitListEvent('责任评选率')" class="popHotBottom1_box"></div>
     </div>
   </div>
 </template>
@@ -60,6 +60,10 @@
       this.doSearch()
     },
     methods: {
+      // 图标点击
+      visitListEvent(title) {
+         this.$emit('visitListEvent', {}, title);
+      },
       // 搜索参数
       clearSearchValue () {
         const obj = {

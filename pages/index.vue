@@ -122,7 +122,7 @@
         <PopHotRight1 v-if="more.type === 'hotRight1'"></PopHotRight1>
         <PopHotRight2 v-if="more.type === 'hotRight2'"></PopHotRight2>
         <!-- <PopHotRight3 v-if="more.type === 'hotRight3'"></PopHotRight3> -->
-        <PopHotBottom1 v-if="more.type === 'hotBottom1'"></PopHotBottom1>
+        <PopHotBottom1 v-if="more.type === 'hotBottom1'" @visitListEvent="visitListEvent"></PopHotBottom1>
         <PopHotWordDetail v-if="more.type === 'hotWordDetail'" @doWordCloud="doWordCloud"></PopHotWordDetail>
         <PopVisitList v-if="more.type === 'visitList'"  @visitItemClick="visitItemClick"></PopVisitList>
         <PopVisitDetail v-if="more.type === 'visitDetail'"></PopVisitDetail>
@@ -234,6 +234,9 @@
       // 点击账号列表中的-待办数量-回调
       daibanEvent (row) {
         this.doShowMore('visitList', '年度信访总量-来访', row);
+      },
+      visitListEvent (row, title) {
+        this.doShowMore('visitList', title, row);
       },
       // 点击自治区接入单位中的-账号数字-回调
       accountEvent (row) {
