@@ -48,10 +48,9 @@
 			  :page-size="20"
 			  :pager-count="11"
 			  layout="prev, pager, next, slot"
-			  :total="100">
-        <span style="color: #f30;margin-right: 20px;float:right;width: 200px;">
+			  :total="100">        
 			<input type="" alt="" value="3"/>
-			共8475页 87989条 572600批次 / 2881052人次</span>
+			<span class="text_c"><b> 共 </b> 8475 <b>页</b> <b> 共 </b> 87989 <b> 条 </b> 572600 <b> 批次 </b> / 2881052 <b> 人次 </b></span>
 			</el-pagination>
       
 
@@ -141,9 +140,19 @@
   }
 </script>
 <style lang='scss' scoped>
-	.page-box{text-align: center;margin-top: 30px;}
+	.page-box{
+		margin-top:30px;
+		width:50%;
+		float:right;
+		overflow:hidden;
+		background:#144372;
+		text-align:left;
+		input{border:1px solid #347cb4;width:5%;margin: 0 10px;height:21px;background:#1c4d73;text-align:center;color:#6bbeff;}		
+		.text_c{color:#6bbeff;}
+		b{color:#e1b60b}
+		}
   .el-table, .el-table__expanded-cell{
-  	background-color: transparent!important;
+  	background: transparent!important;
   }
   .popHotLeft3_box {
     float: left;
