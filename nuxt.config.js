@@ -1,8 +1,17 @@
-
+const {resolve} = require('path');
 module.exports = {
   mode: 'universal',
   router: {
-    base: '/gx/'
+    base: '/gx/',
+    extendRoutes (routes, resolve) {
+      routes.push({
+        name: 'hot',
+        path: '/hot',
+        component: resolve(__dirname, 'pages/index.vue')
+      })
+      console.log('routes:', routes);
+      
+    }
   },
   /*
   ** Headers of the page
