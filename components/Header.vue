@@ -10,7 +10,7 @@
       </ul>
     
     <div class="header_r">
-    <i class="arrow_l"></i><a href="#">区直单位</a> <a href="#">地市桌面</a><i class="arrow_r"></i><span class="time_tit">2022年2月23日 星期天</span>
+    <i class="arrow_l"></i><a href="#">区直单位</a> <a href="#">地市桌面</a><i class="arrow_r"></i><span class="time_tit">{{curTime}}</span>
     </div>
   </div>
 </template>
@@ -20,6 +20,7 @@
   export default {
     data () {
       return {
+        curTime: '',
         menuVisible: false,
         navBoxHeight: 40,
         navList: [
@@ -71,7 +72,26 @@
         }
       }
     },
-    mounted () {},
+    mounted () {
+      var today = new Date();
+      function initArray() {
+          this.length = arguments.length;
+          for (var i = 0; i < this.length; i++)
+              this[i + 1] = arguments[i];
+      }
+      var d = new initArray(
+      "星期日",
+      "星期一",
+      "星期二",
+      "星期三",
+      "星期四",
+      "星期五",
+      "星期六");
+      this.curTime = [today.getFullYear(), "年",
+      today.getMonth() + 1, "月",
+      today.getDate(), "日 ",
+      d[today.getDay() + 1]].join('');
+    },
     methods: {
       changeNavHeight(ht){
         this.navBoxHeight = ht;

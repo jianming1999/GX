@@ -47,10 +47,9 @@
 	      	<el-pagination
 			  :page-size="20"
 			  :pager-count="11"
-			  layout="prev, pager, next, slot"
-			  :total="100">        
-			<input type="" alt="" value="3"/>
-			<span class="text_c"><b> 共 </b> 8475 <b>页</b> <b> 共 </b> 87989 <b> 条 </b> 572600 <b> 批次 </b> / 2881052 <b> 人次 </b></span>
+			  layout="prev, pager, next, jumper, sizes, total, slot"
+			  :total="2881052">
+			<span class="text_c"> </b> 572600 <b> 批次 </b> / 2881052 <b> 人次 </b></span>
 			</el-pagination>
       
 
@@ -141,8 +140,7 @@
 </script>
 <style lang='scss' scoped>
 	.page-box{
-		margin-top:30px;
-		width:50%;
+		margin-top:20px;
 		float:right;
 		overflow:hidden;
 		background:#144372;
