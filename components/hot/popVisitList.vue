@@ -48,8 +48,10 @@
 			  :page-size="20"
 			  :pager-count="11"
 			  layout="prev, pager, next, slot"
-			  :total="1000">
-        <span style="color: #f30;margin-right: 20px;float:right;width: 200px;">572600批次 / 2881052人次</span>
+			  :total="100">
+        <span style="color: #f30;margin-right: 20px;float:right;width: 200px;">
+			<input type="" alt="" value="3"/>
+			共8475页 87989条 572600批次 / 2881052人次</span>
 			</el-pagination>
       
 

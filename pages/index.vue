@@ -22,6 +22,8 @@
       </div>
     </div>
     <div class="pages_hot_pop_box pages_hot_left_box pages_hot_left2_box">
+		<em class="border_l"></em><em class="border_bl"></em>
+		<em class="border_r"></em><em class="border_br"></em>
       <div class="tit_box">
         <span class="t_l dot"></span><i class="t_c">年度信访量同比</i><span class="com_more" @click="doShowMore('hotLeft2', '年度信访量同比')">更多</span><span class="t_r"></span>
       </div>
@@ -30,6 +32,8 @@
       </div>
     </div>
     <div class="pages_hot_pop_box pages_hot_left_box pages_hot_left3_box">
+		<em class="border_l"></em><em class="border_bl"></em>
+		<em class="border_r"></em><em class="border_br"></em>
       <div class="tit_box">
         <span class="t_l dot"></span><i class="t_c">全区接入单位人员占比</i><span class="com_more" @click="doShowMore('hotLeft3', '全区接入单位人员占比')">更多</span><span class="t_r"></span>
       </div>
@@ -39,6 +43,8 @@
     </div>
 
     <div class="pages_hot_pop_box pages_hot_right_box pages_hot_right1_box">
+		<em class="border_l"></em><em class="border_bl"></em>
+		<em class="border_r"></em><em class="border_br"></em>
       <div class="tit_box">
         <span class="t_l dot"></span><i class="t_c">今日信访</i><span class="com_more" >全区录入：188件</span><span class="t_r"></span>
       </div>
@@ -48,6 +54,8 @@
     </div>
 
     <div class="pages_hot_pop_box pages_hot_right_box pages_hot_right2_box">
+		<em class="border_l"></em><em class="border_bl"></em>
+		<em class="border_r"></em><em class="border_br"></em>
       <div class="tit_box">
         <span class="t_l dot"></span><i class="t_c">红黄灯情况</i><span class="com_more" @click="doShowMore('visitList', '年度信访总量-来访')">更多</span><span class="t_r"></span>
       </div>
@@ -62,6 +70,8 @@
     </div>
 
     <div class="pages_hot_pop_box pages_hot_right_box pages_hot_right3_box">
+		<em class="border_l"></em><em class="border_bl"></em>
+		<em class="border_r"></em><em class="border_br"></em>
       <div class="tit_box">
         <span class="t_l dot"></span><i class="t_c">热点词云</i><span class="com_more" @click="doShowMore('hotRight2', '热点词云')">更多</span><span class="t_r"></span>
       </div>
@@ -79,6 +89,8 @@
     
 
     <div class="pages_hot_pop_box pages_hot_bottom_box pages_hot_bottom1_boxx">
+		<em class="border_l"></em><em class="border_bl"></em>
+		<em class="border_r"></em><em class="border_br"></em>
       <div class="tit_box">
         <span class="t_l dot"></span><i class="t_c">考核五率统计</i><span class="com_more" @click="doShowMore('hotBottom1', '考核五率统计')">更多</span><span class="t_r"></span>
       </div>
@@ -270,7 +282,7 @@
         this.loadLeft3() // 加载年度重复集体访
         this.loadRight1() // 加载今日信访
         this.loadRight3() // 加载红黄灯情况
-        this.loadBottom1() // 加载考核四率统计
+        this.loadBottom1() // 加载考核五率统计
       },
 
       /**
@@ -487,7 +499,7 @@
         obj.on('click', (params) => {
           console.log('params:');
           console.log(params);
-          if(params.seriesName === '考核四率统计'){
+          if(params.seriesName === '考核五率统计'){
             return;
           }else if(params.seriesName === '全区接入单位人员占比'){
             self.doShowMore('comList', '自治区接入单位-地市信访局', params);
