@@ -250,14 +250,16 @@ li { list-style: none;}
 .el-pagination .btn-next, .el-pagination .btn-prev,.el-pagination button:disabled,.el-pagination .btn-next, .el-pagination .el-pager li.btn-quicknext, .el-pager li.btn-quickprev,.btn-prev{background:transparent;color:#409EFF}
 .el-table thead{color: #4fdafc;background: #0c51a5;}
 .com_more_pop_header_box {
-  width:60%;
+  width:auto;
   white-space: nowrap;           
   color: #4fd9fc;
   font-size:14px;
   position:relative;
   top:-66px;
-  right:0;
+  right:20px;
   float:right;
+ 
+ 
   
    
   .dot{width:8px;height:8px;background:#0569af;margin:0 6px 3px;vertical-align: middle;display: inline-block;}

@@ -104,7 +104,7 @@
               radius: [0, '35%'],
               center : ['50%', '55%'],
               label: {
-                fontSize: 11,
+                fontSize: 12,
                 normal: {
                   position: 'inner'
                 },
@@ -182,6 +182,7 @@
                   itemStyle: {
                     color: '#dcca36'
                   },
+				  textStyle:18,
                   value:105,
                   name:'网信'
                 }
