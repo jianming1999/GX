@@ -1,14 +1,6 @@
 <template>
   <div class="com_more_pop_box">
-    <div class="com_more_pop_header_box clearfix">
-      <div class="com_left marB10 marR10 title">统计条件:</div>
-
-
-      <el-button class="com_left marB10" :type="search.type === 'week' ? 'success' : 'primary'" size="small" @click="doSearch('week')">按周</el-button>
-      <el-button class="com_left marB10" :type="search.type === 'month' ? 'success' : 'primary'" size="small" @click="doSearch('month')">按月</el-button>
-      <el-button class="com_left marB10" :type="search.type === 'year' ? 'success' : 'primary'" size="small" @click="doSearch('year')">按年</el-button>
-
-    </div>
+    
     <div class="com_more_pop_body_box clearfix" style="position:relative;margin:0 auto;width:100%;">
       <div class="wordCloud_box">
         <word-cloud
@@ -38,7 +30,15 @@
   import WordCloud from '~/components/WordCloud.vue'
 
   export default {
-    props: {},
+    props: {
+      // 搜索条件
+      searchType: {
+        type: String,
+        default(){
+          return '';
+        }
+      }
+    },
 
     components: {
       WordCloud
@@ -48,8 +48,7 @@
       return {
         wordCloudData: [], // 词云
         curWordCloudKey: '', // 当前词云关键词
-        kwList: [], // 当前词云关键词对应的列表
-        search: this.clearSearchValue() // 搜索条件
+        kwList: [] // 当前词云关键词对应的列表
       }
     },
     created () {},
@@ -58,13 +57,6 @@
       this.doSearch()
     },
     methods: {
-      // 搜索参数
-      clearSearchValue () {
-        const obj = {
-          type: ''
-        }
-        return obj
-      },
 
       /**
        * 加载词云
@@ -73,8 +65,7 @@
        * 按月(month)
        * 按年(year)
        */
-      doSearch (type) {
-        this.search.type = type
+      doSearch () {
 
         // 数据
         this.wordCloudData = [

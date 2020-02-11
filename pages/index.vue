@@ -73,7 +73,7 @@
 		<em class="border_l"></em><em class="border_bl"></em>
 		<em class="border_r"></em><em class="border_br"></em>
       <div class="tit_box">
-        <span class="t_l dot"></span><i class="t_c">热点词云</i><span class="com_more" @click="doShowMore('hotRight2', '热点词云')">更多</span><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">热点词云</i><span class="com_more" @click="doShowMore('hotWordMore', '热点词云')">更多</span><span class="t_r"></span>
       </div>
       <div class="con_box">
         
@@ -82,7 +82,7 @@
           v-if="wordCloudData.length"
           :data="wordCloudData"
           className="indexWordClass"
-          id="hotRight2"
+          id="hotWordMore"
         />
       </div>
     </div>
@@ -123,9 +123,16 @@
               :value="item.value">
             </el-option>
           </el-select>
-
-          
         </template>
+        <template v-if="more.type === 'hotWordMore'">
+          <div class="com_right" style="width: 400px">
+            <div class="com_left marB10 marR10 title" style="font-size: 18px;line-height: 30px;">统计条件:</div>
+            <el-button class="com_left marB10" :type="hotWordMoreSearchType === 'week' ? 'success' : 'primary'" size="small" @click="hotWordMoreDoSearch('week')">按周</el-button>
+            <el-button class="com_left marB10" :type="hotWordMoreSearchType === 'month' ? 'success' : 'primary'" size="small" @click="hotWordMoreDoSearch('month')">按月</el-button>
+            <el-button class="com_left marB10" :type="hotWordMoreSearchType === 'year' ? 'success' : 'primary'" size="small" @click="hotWordMoreDoSearch('year')">按年</el-button>
+          </div>
+        </template>
+
       </div>
 
       <div>
@@ -133,7 +140,7 @@
         <PopHotLeft2 v-if="more.type === 'hotLeft2'"></PopHotLeft2>
         <PopHotLeft3 v-if="more.type === 'hotLeft3'"></PopHotLeft3>
         <PopHotRight1 v-if="more.type === 'hotRight1'"></PopHotRight1>
-        <PopHotRight2 v-if="more.type === 'hotRight2'"></PopHotRight2>
+        <PopHotWordMore v-if="more.type === 'hotWordMore'" :searchType="hotWordMoreSearchType"></PopHotWordMore>
         <!-- <PopHotRight3 v-if="more.type === 'hotRight3'"></PopHotRight3> -->
         <PopHotBottom1 v-if="more.type === 'hotBottom1'" @visitListEvent="visitListEvent"></PopHotBottom1>
         <PopHotWordDetail v-if="more.type === 'hotWordDetail'" @doWordCloud="doWordCloud"></PopHotWordDetail>
@@ -160,8 +167,7 @@
   import PopHotLeft2 from '~/components/hot/popHotLeft2.vue'
   import PopHotLeft3 from '~/components/hot/popHotLeft3.vue'
   import PopHotRight1 from '~/components/hot/popHotRight1.vue'
-  import PopHotRight2 from '~/components/hot/popHotRight2.vue'
-  // import PopHotRight3 from '~/components/hot/popHotRight3.vue'
+  import PopHotWordMore from '~/components/hot/PopHotWordMore.vue'
   import PopHotBottom1 from '~/components/hot/popHotBottom1.vue'
   import PopHotWordDetail from '~/components/hot/popHotWordDetail.vue'
   import PopAccountList from '~/components/hot/popAccountList.vue'
@@ -177,8 +183,7 @@
       PopHotLeft2,
       PopHotLeft3,
       PopHotRight1,
-      PopHotRight2,
-      // PopHotRight3,
+      PopHotWordMore,
       PopHotBottom1,
       PopHotWordDetail,
       Header,
@@ -190,6 +195,8 @@
 
     data () {
       return {
+        // 热点词云更多-统计条件
+        hotWordMoreSearchType: '',
         // comList弹出层-信访形式
         typeOptions: [
           {value: 0, label: '信访单位'},
@@ -237,6 +244,10 @@
 
     // 方法集合
     methods: {
+      // 热点词云弹出层-统计条件
+      hotWordMoreDoSearch(type){
+        this.hotWordMoreSearchType = type;
+      },
       // 点击词云详情中的词-回调
       doWordCloud (row) {
         this.doShowMore('visitList', '年度信访总量-来访', row);
