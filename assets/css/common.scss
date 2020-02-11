@@ -168,6 +168,7 @@ li { list-style: none;}
     padding: 10px 20px;
     background: #173a81;
     .el-dialog__title {
+	 width:30%;
       color: #12c0ff;
       line-height: 24px;
       font-size: 22px;
@@ -176,8 +177,8 @@ li { list-style: none;}
     }
     .dot {
       background: #00ebff;
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       position: absolute;
       top: 50%;
@@ -249,11 +250,11 @@ li { list-style: none;}
 .el-pagination .btn-next, .el-pagination .btn-prev,.el-pagination button:disabled,.el-pagination .btn-next, .el-pagination .el-pager li.btn-quicknext, .el-pager li.btn-quickprev,.btn-prev{background:transparent;color:#409EFF}
 .el-table thead{color: #4fdafc;background: #0c51a5;}
 .com_more_pop_header_box {
-  background:#0f3b71;
+  
   white-space: nowrap;           
   color: #4fd9fc;
   font-size: 14px;
-  padding: 10px 6px;
+  
    
   .dot{width:8px;height:8px;background:#0569af;margin:0 6px 3px;vertical-align: middle;display: inline-block;}
 }
