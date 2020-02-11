@@ -125,7 +125,7 @@
           </el-select>
         </template>
         <template v-if="more.type === 'hotWordMore'">
-          <div class="com_right" style="width: 400px">
+          <div class="com_right" style="width: 300px">
             <div class="com_left marB10 marR10 title" style="font-size: 18px;line-height: 30px;">统计条件:</div>
             <el-button class="com_left marB10" :type="hotWordMoreSearchType === 'week' ? 'success' : 'primary'" size="small" @click="hotWordMoreDoSearch('week')">按周</el-button>
             <el-button class="com_left marB10" :type="hotWordMoreSearchType === 'month' ? 'success' : 'primary'" size="small" @click="hotWordMoreDoSearch('month')">按月</el-button>
