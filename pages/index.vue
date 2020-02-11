@@ -621,7 +621,7 @@
                   position: 'inside',
                   formatter: '{d}%', //${c} \n[{d}%]
                   textStyle: {
-                    fontSize: 10
+                    fontSize:10
                   },
                   show: true
                 }

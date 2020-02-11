@@ -118,9 +118,10 @@
           legend: {
             bottom: '0',
             data: ['2018重复访', '2018集体访', '2018初次访'],
-            itemWidth: 10,
-            itemHeight: 10,
+            itemWidth: 12,
+            itemHeight: 12,
             textStyle: {
+			fontSize:16,
               color: '#fff'
             }
           },
@@ -134,7 +135,7 @@
                   position: 'inside',
                   formatter: '{c}\n[{d}%]',
                   textStyle: {
-                    fontSize: 10
+                    fontSize:20
                   },
                   show: true
                 }
@@ -190,9 +191,10 @@
           legend: {
             bottom: '0',
             data: ['2019重复访', '2019集体访', '2019初次访'],
-            itemWidth: 10,
-            itemHeight: 10,
+            itemWidth: 12,
+            itemHeight: 12,
             textStyle: {
+				fontSize:16,
               color: '#fff'
             }
           },
@@ -206,7 +208,7 @@
                   position: 'inside',
                   formatter: '{c}\n[{d}%]',
                   textStyle: {
-                    fontSize: 10
+                    fontSize: 20
                   },
                   show: true
                 }
