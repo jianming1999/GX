@@ -695,9 +695,7 @@
                   itemStyle: {
                     color: '#0666e8'
                   },
-        				  textStyle: {
-        				    color: '#0666e8'
-        				  },
+        				  
                   name: '地市信访[14/300]',
                   value: 120
                 },

@@ -100,10 +100,12 @@
           },
           legend: {
             data:['今年信访量', '同期信访量'],
-            itemWidth: 10,
-            itemHeight: 10,
+            itemWidth: 12,
+            itemHeight: 12,
             textStyle: {
-              color: '#fff'
+			 fontSize:18,
+              color: '#fff',
+			
             },
             bottom: 0
           },
@@ -111,7 +113,11 @@
             {
               type: 'category',
               data: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
-              axisPointer: {
+              textStyle: {
+               fontSize:24,
+              
+              },
+			  axisPointer: {
                 type: 'shadow'
               }
             }
