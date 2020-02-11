@@ -88,9 +88,10 @@
           eId: 'popHotLeft1',
           legend: {
             data:['来信','来访','网信','复查复核'],
-            itemWidth: 10,
-            itemHeight: 10,
+            itemWidth: 12,
+            itemHeight: 12,
             textStyle: {
+			fontSize:18,
               color: '#fff'
             },
             bottom: 0
@@ -119,8 +120,8 @@
               },
               labelLine: {
                 normal: {
-                  length: 10,
-                  length2: 10
+                  length: 12,
+                  length2: 12
                 }
               },
               data:[
@@ -149,14 +150,16 @@
               },
               labelLine: {
                 normal: {
-                  length: 10,
-                  length2: 10
+                  length: 12,
+                  length2: 12
                 }
               },
-              data:[
+              data:[	
+			
                 {
                   itemStyle: {
-                    color: '#1886ff'
+                    color: '#1886ff',
+				
                   },
                   value:113,
                   name:'复查复核'

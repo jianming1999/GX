@@ -14,7 +14,7 @@
         <word-cloud
           v-if="wordCloudData.length"
           :data="wordCloudData"
-          :sizeRange="[30, 60]"
+          :sizeRange="[40, 80]"
           id="popHotRight2"
           @callback="doWordCloud"
         />
