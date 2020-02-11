@@ -617,9 +617,49 @@
             right: '3%',
             top: 'center',
             left: '50%',
-            data: ['区直单位[202/268]', '地市信访[14/300]', '市直单位[1305/1591]', '县区信访[117/707]', '县直单位[5567/5995]', '县以下单位[5567/5995]'],
+            data: [
+            {
+              name: '区直单位[202/268]',
+              textStyle: {
+                color: '#'
+              }
+            },
+            {
+              name: '地市信访[14/300]',
+              textStyle: {
+                color: '#0666e8'
+              }
+            },
+            {
+              name: '市直单位[1305/1591]',
+              textStyle: {
+                color: '#3eb177'
+              }
+            },
+            {
+              name: '县区信访[117/707]',
+              textStyle: {
+                color: '#3ecc77'
+              }
+            },
+            {
+              name: '县直单位[5567/5995]',
+              textStyle: {
+                color: '#ccb177'
+              }
+            },
+            {
+              name: '县以下单位[5567/5995]',
+              textStyle: {
+                color: '#fea21f'
+              }
+            }
+            ],
             itemWidth: 10,
             itemHeight: 10,
+            // textStyle: {
+            //   color: '#fea21f'
+            // }
            
           },
           series : [
@@ -655,9 +695,9 @@
                   itemStyle: {
                     color: '#0666e8'
                   },
-				  textStyle: {
-				    color: '#0666e8'
-				  },
+        				  textStyle: {
+        				    color: '#0666e8'
+        				  },
                   name: '地市信访[14/300]',
                   value: 120
                 },
