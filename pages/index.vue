@@ -421,12 +421,35 @@
             orient: 'vertical',
             top: 'center',
             right: '3%',
-            data:['来信','来访','网信','复查复核'],
+            data:[
+                          {
+                            name: '来信',
+                            textStyle: {
+                              color: '#f35945'
+                            }
+                          },
+                          {
+                            name: '来访',
+                            textStyle: {
+                              color: '#11c0ff'
+                            }
+                          },
+                          {
+                            name: '网信',
+                            textStyle: {
+                              color: '#dcca36'
+                            }
+                          },
+                          {
+                            name: '复查复核',
+                            textStyle: {
+                              color: '#1886ff'
+                            }
+                          }
+            
+                        ],
             itemWidth: 10,
-            itemHeight: 10,
-            textStyle: {
-              color: '#fff'
-            }
+            itemHeight: 10,           
           },
           series: [
             {
@@ -472,6 +495,7 @@
                   name:'来信'
                 },
                 {
+					
                   itemStyle: {
                     color: '#11c0ff'
                   },
