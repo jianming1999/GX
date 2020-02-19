@@ -83,32 +83,28 @@ window.requestNextAnimationFrame = (function () {
 function to2Fixed(number){
 	return Number((number).toFixed(2));
 }
-//绘制tooltip提示文字
-function drawToolTip(txtLoc, x, y) {
-    ctx.save();
-    var padding = 5;
-    var font = "14px arial";
-    ctx.font = font;
-    ctx.textBaseline = 'bottom';
-    ctx.fillStyle = 'rgba(0,0,0,0.4)';
 
-    //绘制ToolTip背景
-    var width = ctx.measureText(txtLoc).width + 20;
-    var height = parseInt(font, 10);
-    ctx.fillRect(x + 10, y-height, width+padding*2, height+padding*2);
-
-    //绘制ToolTip文字
-    ctx.fillStyle = 'white';
-    ctx.fillText(txtLoc, x+padding+10, y+padding);
-
-    ctx.restore();
+function parseStr(n){
+	if(n === null || n === undefined) return '0';
+	return n + '';
 }
-function onMouseMove(e){
-  // 取得画布上被单击的点
-  clickX = e.pageX - canvas.offsetLeft;
-  clickY = e.pageY - canvas.offsetTop;
+function YellowLight(opts){
+	this.ctx = opts.ctx;
+	this.curValMap = {cur1:0,cur2:0,cur3:0,cur4:0,cur5:0};
+	this.globalOption = Object.assign({
+		// 今日过期
+		toDayTimout: 0,
+		// 受理黄灯 
+		acceptYellow: 0,
+		// 办结黄灯
+		completeYellow: 0,
+		// 受理红灯
+		acceptHot: 0,
+		// 办结红灯
+		completeHot: 0
+	}, opts.globalOption || {});
 }
-function draw(opts){
+YellowLight.prototype.draw = function(opts){
 	var total = 2,
 		startX = opts.startX || 150,
 		startY = opts.startY || 150,
@@ -122,12 +118,14 @@ function draw(opts){
 		edg = 0,
 		arr = [0.02, 0.1, 0.24, 0.24, 0.1, 0.24, 0.2],
 		step = 0,
+		ctx = this.ctx,
 		arrSum = 0;
 	for (var i = 0; i < arr.length; i++){
 		arrSum += arr[i];
 	}	
 
 	step = to2Fixed((total - blank * arr.length) / arrSum);		
+	
 	
 	ctx.beginPath();
 	ctx.lineWidth=1;
@@ -160,14 +158,14 @@ function draw(opts){
 	ctx.fillText(opts.desc,startX-(ctx.measureText(opts.desc).width / 2),startY+descFix.y);
 	ctx.closePath();
 }
-function parseStr(n){
-	if(n === null || n === undefined) return '0';
-	return n + '';
-}
-function start(){
+YellowLight.prototype.drawAll = function(){
+	var self = this,
+		ctx = this.ctx,
+		globalOption = this.globalOption,
+		curValMap = this.curValMap;
 	// 清除上一次的矩形
 	ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height );
-	draw({
+	this.draw({
 		cur: curValMap.cur1+=0.005,
 		val: parseStr(globalOption.toDayTimout),
 		startX: 150,
@@ -186,7 +184,7 @@ function start(){
 			y: 20
 		}
 	});
-	draw({
+	this.draw({
 		cur: curValMap.cur2-=0.005,
 		val: parseStr(globalOption.acceptYellow),
 		startX: 50,
@@ -205,7 +203,7 @@ function start(){
 			y: 12
 		}
 	});
-	draw({
+	this.draw({
 		cur: curValMap.cur3+=0.005,
 		val: parseStr(globalOption.completeYellow),
 		startX: 250,
@@ -224,7 +222,7 @@ function start(){
 			y: 12
 		}
 	});
-	draw({
+	this.draw({
 		cur: curValMap.cur4-=0.005,
 		val: parseStr(globalOption.acceptHot),
 		startX: 50,
@@ -243,7 +241,7 @@ function start(){
 			y: 12
 		}
 	});
-	draw({
+	this.draw({
 		cur: curValMap.cur5+=0.005,
 		val: parseStr(globalOption.completeHot),
 		startX: 250,
@@ -261,36 +259,17 @@ function start(){
 			x: -18,
 			y: 12
 		}
-	});
-	// if(clickX !== undefined && clickY !== undefined){
-		// drawToolTip("颜色：xxxxx", clickX, clickY);	
-	// }
-	
-	requestNextAnimationFrame(function(){
-		start()
-	});
+	});	
 }
-function init(options){				
-	canvas = document.getElementById(obj.eId);
-	ctx = canvas.getContext('2d');
-	ctx.scale(2,2);
-	curValMap = {cur1:0,cur2:0,cur3:0,cur4:0,cur5:0}, nowDt = new Date().getTime();
-	globalOption = Object.assign({
-		// 今日过期
-		toDayTimout: 0,
-		// 受理黄灯 
-		acceptYellow: 0,
-		// 办结黄灯
-		completeYellow: 0,
-		// 受理红灯
-		acceptHot: 0,
-		// 办结红灯
-		completeHot: 0
-	}, options || {})
-	start();
+YellowLight.prototype.run = function(){
+	var self = this;
+	this.drawAll();
+	requestNextAnimationFrame(function(){
+		self.run()
+	});
 }
 export default {
-	isInit: false,
+	instanceMap: {},
 	init: function init(options){
 		let boxEl = document.getElementById(options.eId);
 		boxEl.innerHTML = '';
@@ -303,7 +282,6 @@ export default {
 		ctx = canvas.getContext('2d');
 		ctx.scale(2,2);
 		
-		curValMap = {cur1:0,cur2:0,cur3:0,cur4:0,cur5:0}, nowDt = new Date().getTime();
 		globalOption = Object.assign({
 			// 今日过期
 			toDayTimout: 0,
@@ -316,9 +294,7 @@ export default {
 			// 办结红灯
 			completeHot: 0
 		}, options || {});
-		if(!this.isInit){
-			this.isInit= true;
-			start();
-		}
+		
+		new YellowLight({ctx: ctx, globalOption: globalOption}).run();
 	}
 }
