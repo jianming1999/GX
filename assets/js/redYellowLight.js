@@ -81,220 +81,264 @@ window.requestNextAnimationFrame = (function () {
 }
 
 function to2Fixed(number){
-	return Number((number).toFixed(2));
+    return Number((number).toFixed(2));
 }
 
 function parseStr(n){
-	if(n === null || n === undefined) return '0';
-	return n + '';
+    if(n === null || n === undefined) return '0';
+    return n + '';
 }
 function YellowLight(opts){
-	this.ctx = opts.ctx;
-	this.curValMap = {cur1:0,cur2:0,cur3:0,cur4:0,cur5:0};
-	this.globalOption = Object.assign({
-		// 今日过期
-		toDayTimout: 0,
-		// 受理黄灯 
-		acceptYellow: 0,
-		// 办结黄灯
-		completeYellow: 0,
-		// 受理红灯
-		acceptHot: 0,
-		// 办结红灯
-		completeHot: 0
-	}, opts.globalOption || {});
+    this.ctx = opts.ctx;
+    this.curValMap = {cur1:0,cur2:0,cur3:0,cur4:0,cur5:0};
+    this.globalOption = Object.assign({
+        // 今日过期
+        toDayTimout: 0,
+        // 受理黄灯 
+        acceptYellow: 0,
+        // 办结黄灯
+        completeYellow: 0,
+        // 受理红灯
+        acceptHot: 0,
+        // 办结红灯
+        completeHot: 0
+    }, opts.globalOption || {});
 }
 YellowLight.prototype.draw = function(opts){
-	var total = 2,
-		startX = opts.startX || 150,
-		startY = opts.startY || 150,
-		radius = opts.radius || 37,
-		valFont = opts.valFont || '30px bold Arial',
-		descFont = opts.descFont || '14px bold Arial',
-		valFix = opts.valFix || {x:0,y:0},
-		descFix = opts.descFix || {x:0,y:0},
-		blank = 0.1,
-		cur = opts.cur,
-		edg = 0,
-		arr = [0.02, 0.1, 0.24, 0.24, 0.1, 0.24, 0.2],
-		step = 0,
-		ctx = this.ctx,
-		arrSum = 0;
-	for (var i = 0; i < arr.length; i++){
-		arrSum += arr[i];
-	}	
+    var total = 2,
+        startX = opts.startX || 150,
+        startY = opts.startY || 150,
+        radius = opts.radius || 37,
+        valFont = opts.valFont || '30px bold Arial',
+        descFont = opts.descFont || '14px bold Arial',
+        valFix = opts.valFix || {x:0,y:0},
+        descFix = opts.descFix || {x:0,y:0},
+        blank = 0.1,
+        cur = opts.cur,
+        edg = 0,
+        arr = [0.02, 0.1, 0.24, 0.24, 0.1, 0.24, 0.2],
+        step = 0,
+        ctx = this.ctx,
+        arrSum = 0;
+    for (var i = 0; i < arr.length; i++){
+        arrSum += arr[i];
+    }   
 
-	step = to2Fixed((total - blank * arr.length) / arrSum);		
-	
-	
-	ctx.beginPath();
-	ctx.lineWidth=1;
-	ctx.arc(startX,startY,radius,0,Math.PI*2);
-	ctx.strokeStyle = '#13418a';
-	ctx.fillStyle='#1a1864';
-	ctx.fill();
-	ctx.stroke();
+    step = to2Fixed((total - blank * arr.length) / arrSum);     
+    
+    
+    ctx.beginPath();
+    ctx.lineWidth=1;
+    ctx.arc(startX,startY,radius,0,Math.PI*2);
+    ctx.strokeStyle = '#13418a';
+    ctx.fillStyle='#1a1864';
+    ctx.fill();
+    ctx.stroke();
 
-	ctx.beginPath();
-	ctx.lineWidth=2;
-	ctx.arc(startX,startY,radius+3,0,Math.PI*2);
-	ctx.strokeStyle = opts.strokeStyle;
-	ctx.stroke();
+    ctx.beginPath();
+    ctx.lineWidth=2;
+    ctx.arc(startX,startY,radius+3,0,Math.PI*2);
+    ctx.strokeStyle = opts.strokeStyle;
+    ctx.stroke();
 
 
-	for (var i = 0; i < arr.length; i++){
-		edg = to2Fixed(cur + arr[i] * step);
-		ctx.beginPath();
-		ctx.arc(startX,startY,radius+10,Math.PI*cur,Math.PI*edg);
-		ctx.stroke();
-		cur = to2Fixed(edg + blank);
-	}
+    for (var i = 0; i < arr.length; i++){
+        edg = to2Fixed(cur + arr[i] * step);
+        ctx.beginPath();
+        ctx.arc(startX,startY,radius+10,Math.PI*cur,Math.PI*edg);
+        ctx.stroke();
+        cur = to2Fixed(edg + blank);
+    }
 
-	ctx.font=valFont;
-	ctx.fillStyle = opts.strokeStyle;
+    ctx.font=valFont;
+    ctx.fillStyle = opts.strokeStyle;
 
-	ctx.fillText(opts.val,startX-(ctx.measureText(opts.val).width / 2),startY+valFix.y);
-	ctx.font=descFont;
-	ctx.fillText(opts.desc,startX-(ctx.measureText(opts.desc).width / 2),startY+descFix.y);
-	ctx.closePath();
+    ctx.fillText(opts.val,startX-(ctx.measureText(opts.val).width / 2),startY+valFix.y);
+    ctx.font=descFont;
+    ctx.fillText(opts.desc,startX-(ctx.measureText(opts.desc).width / 2),startY+descFix.y);
+    ctx.closePath();
 }
 YellowLight.prototype.drawAll = function(){
-	var self = this,
-		ctx = this.ctx,
-		globalOption = this.globalOption,
-		curValMap = this.curValMap;
-	// 清除上一次的矩形
-	ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height );
-	this.draw({
-		cur: curValMap.cur1+=0.005,
-		val: parseStr(globalOption.toDayTimout),
-		startX: 150,
-		startY: 80,
-		radius: 34,
-		desc: '今日过期',
-		strokeStyle: '#9746d3',
-		valFont: '24px bold Arial',
-		valFix: {
-			x: -8,
-			y: 0
-		},
-		descFont: '14px bold Arial',
-		descFix: {
-			x: -28,
-			y: 20
-		}
-	});
-	this.draw({
-		cur: curValMap.cur2-=0.005,
-		val: parseStr(globalOption.acceptYellow),
-		startX: 50,
-		startY: 40,
-		radius: 22,
-		desc: '受理黄灯',
-		strokeStyle: '#d18733',
-		valFont: '14px bold Arial',
-		valFix: {
-			x: -5,
-			y: 0
-		},
-		descFont: '10px bold Arial',
-		descFix: {
-			x: -18,
-			y: 12
-		}
-	});
-	this.draw({
-		cur: curValMap.cur3+=0.005,
-		val: parseStr(globalOption.completeYellow),
-		startX: 250,
-		startY: 40,
-		radius: 22,
-		desc: '办结黄灯',
-		strokeStyle: '#d18733',
-		valFont: '14px bold Arial',
-		valFix: {
-			x: -5,
-			y: 0
-		},
-		descFont: '10px bold Arial',
-		descFix: {
-			x: -18,
-			y: 12
-		}
-	});
-	this.draw({
-		cur: curValMap.cur4-=0.005,
-		val: parseStr(globalOption.acceptHot),
-		startX: 50,
-		startY: 114,
-		radius: 22,
-		desc: '受理红灯',
-		strokeStyle: '#b0374b',
-		valFont: '14px bold Arial',
-		valFix: {
-			x: -5,
-			y: 0
-		},
-		descFont: '10px bold Arial',
-		descFix: {
-			x: -18,
-			y: 12
-		}
-	});
-	this.draw({
-		cur: curValMap.cur5+=0.005,
-		val: parseStr(globalOption.completeHot),
-		startX: 250,
-		startY: 114,
-		radius: 22,
-		desc: '办结红灯',
-		strokeStyle: '#b0374b',
-		valFont: '14px bold Arial',
-		valFix: {
-			x: -5,
-			y: 0
-		},
-		descFont: '10px bold Arial',
-		descFix: {
-			x: -18,
-			y: 12
-		}
-	});	
+    var self = this,
+        ctx = this.ctx,
+        globalOption = this.globalOption,
+        curValMap = this.curValMap;
+    // 清除上一次的矩形
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height );
+    this.draw({
+        cur: curValMap.cur1+=0.005,
+        val: parseStr(globalOption.toDayTimout),
+        startX: 150,
+        startY: 80,
+        radius: 34,
+        desc: '今日过期',
+        strokeStyle: '#9746d3',
+        valFont: '24px bold Arial',
+        valFix: {
+            x: -8,
+            y: 0
+        },
+        descFont: '14px bold Arial',
+        descFix: {
+            x: -28,
+            y: 20
+        }
+    });
+    this.draw({
+        cur: curValMap.cur2-=0.005,
+        val: parseStr(globalOption.acceptYellow),
+        startX: 50,
+        startY: 40,
+        radius: 22,
+        desc: '受理黄灯',
+        strokeStyle: '#d18733',
+        valFont: '14px bold Arial',
+        valFix: {
+            x: -5,
+            y: 0
+        },
+        descFont: '10px bold Arial',
+        descFix: {
+            x: -18,
+            y: 12
+        }
+    });
+    this.draw({
+        cur: curValMap.cur3+=0.005,
+        val: parseStr(globalOption.completeYellow),
+        startX: 250,
+        startY: 40,
+        radius: 22,
+        desc: '办结黄灯',
+        strokeStyle: '#d18733',
+        valFont: '14px bold Arial',
+        valFix: {
+            x: -5,
+            y: 0
+        },
+        descFont: '10px bold Arial',
+        descFix: {
+            x: -18,
+            y: 12
+        }
+    });
+    this.draw({
+        cur: curValMap.cur4-=0.005,
+        val: parseStr(globalOption.acceptHot),
+        startX: 50,
+        startY: 114,
+        radius: 22,
+        desc: '受理红灯',
+        strokeStyle: '#b0374b',
+        valFont: '14px bold Arial',
+        valFix: {
+            x: -5,
+            y: 0
+        },
+        descFont: '10px bold Arial',
+        descFix: {
+            x: -18,
+            y: 12
+        }
+    });
+    this.draw({
+        cur: curValMap.cur5+=0.005,
+        val: parseStr(globalOption.completeHot),
+        startX: 250,
+        startY: 114,
+        radius: 22,
+        desc: '办结红灯',
+        strokeStyle: '#b0374b',
+        valFont: '14px bold Arial',
+        valFix: {
+            x: -5,
+            y: 0
+        },
+        descFont: '10px bold Arial',
+        descFix: {
+            x: -18,
+            y: 12
+        }
+    }); 
 }
 YellowLight.prototype.run = function(){
-	var self = this;
-	this.drawAll();
-	requestNextAnimationFrame(function(){
-		self.run()
-	});
+    var self = this;
+    this.drawAll();
+    requestNextAnimationFrame(function(){
+        self.run()
+    });
 }
 export default {
-	instanceMap: {},
-	init: function init(options){
-		let boxEl = document.getElementById(options.eId);
-		boxEl.innerHTML = '';
-		canvas = document.createElement('canvas');
-		canvas.width = 600;
-		canvas.height = 300;
-		canvas.style.width = '100%';
-		// canvas.style.height = '150px';
-		boxEl.appendChild(canvas);
-		ctx = canvas.getContext('2d');
-		ctx.scale(2,2);
-		
-		globalOption = Object.assign({
-			// 今日过期
-			toDayTimout: 0,
-			// 受理黄灯 
-			acceptYellow: 0,
-			// 办结黄灯
-			completeYellow: 0,
-			// 受理红灯
-			acceptHot: 0,
-			// 办结红灯
-			completeHot: 0
-		}, options || {});
-		
-		new YellowLight({ctx: ctx, globalOption: globalOption}).run();
-	}
+    instanceMap: {},
+    init: function init(options){
+        let boxEl = document.getElementById(options.eId);
+        boxEl.innerHTML = '';
+        canvas = document.createElement('canvas');
+        canvas.width = 600;
+        canvas.height = 300;
+        canvas.style.width = '100%';
+        // canvas.style.height = '150px';
+        boxEl.appendChild(canvas);
+        ctx = canvas.getContext('2d');
+        ctx.scale(2,2);
+
+        canvas.addEventListener('mousemove', function(event){
+            //获取用户大大鼠标点击的点位坐标
+            var circleArr = [
+                {x: 150, y: 80, r: 49},
+                {x: 50, y: 40, r: 37},
+                {x: 250, y: 40, r: 37},
+                {x: 50, y: 114, r: 37},
+                {x: 250, y: 114, r: 37}
+            ],
+
+            clientX = event.clientX - canvas.getBoundingClientRect().left,
+            clientY = event.clientY - canvas.getBoundingClientRect().top,
+            pointX,
+            pointY,
+            pointR,
+            ratio = canvas.getBoundingClientRect().width/300,
+            dis,
+            isExist = false;
+            console.log('clientX:', clientX);
+            console.log('clientY:', clientY);
+            for (var i = circleArr.length - 1; i >= 0; i--) {
+                pointX = circleArr[i].x * ratio;
+                pointY = circleArr[i].y * ratio;
+                pointR = circleArr[i].r * ratio;
+
+                // dis = Math.abs(Math.sqrt((clientX - circleArr[i].x) * (clientX - circleArr[i].x) + (clientY - circleArr[i].y) * (clientY - circleArr[i].y)));//Math.sqrt()求平方跟
+                dis = Math.abs(Math.sqrt(Math.pow(clientX - pointX, 2) + Math.pow(clientY - pointY, 2)));
+                if(dis <= pointR){
+                    isExist = true;
+                    console.log('isExist is true')
+                    break;
+                }
+                
+            }
+            if(isExist){
+                canvas.style.cursor = 'pointer';
+                console.log('curosr: pointer');
+            }else{
+                canvas.style.cursor = 'default';
+                console.log('curosr: default');
+            }
+
+        }, false);
+        
+        globalOption = Object.assign({
+            // 今日过期
+            toDayTimout: 0,
+            // 受理黄灯 
+            acceptYellow: 0,
+            // 办结黄灯
+            completeYellow: 0,
+            // 受理红灯
+            acceptHot: 0,
+            // 办结红灯
+            completeHot: 0
+        }, options || {});
+        
+        new YellowLight({ctx: ctx, globalOption: globalOption}).run();
+    }
 }
