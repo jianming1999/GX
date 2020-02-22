@@ -285,11 +285,11 @@ export default {
         canvas.addEventListener('mousemove', function(event){
             //获取用户大大鼠标点击的点位坐标
             var circleArr = [
-                {x: 150, y: 80, r: 49},
-                {x: 50, y: 40, r: 37},
-                {x: 250, y: 40, r: 37},
-                {x: 50, y: 114, r: 37},
-                {x: 250, y: 114, r: 37}
+                {x: 150, y: 80, r: 49, key: 'toDayTimout'},
+                {x: 50, y: 40, r: 37, key: 'acceptYellow'},
+                {x: 250, y: 40, r: 37, key: 'completeYellow'},
+                {x: 50, y: 114, r: 37, key: 'acceptHot'},
+                {x: 250, y: 114, r: 37, key: 'completeHot'}
             ],
 
             clientX = event.clientX - canvas.getBoundingClientRect().left,
@@ -299,9 +299,7 @@ export default {
             pointR,
             ratio = canvas.getBoundingClientRect().width/300,
             dis,
-            isExist = false;
-            console.log('clientX:', clientX);
-            console.log('clientY:', clientY);
+            currentKey = '';
             for (var i = circleArr.length - 1; i >= 0; i--) {
                 pointX = circleArr[i].x * ratio;
                 pointY = circleArr[i].y * ratio;
@@ -310,19 +308,17 @@ export default {
                 // dis = Math.abs(Math.sqrt((clientX - circleArr[i].x) * (clientX - circleArr[i].x) + (clientY - circleArr[i].y) * (clientY - circleArr[i].y)));//Math.sqrt()求平方跟
                 dis = Math.abs(Math.sqrt(Math.pow(clientX - pointX, 2) + Math.pow(clientY - pointY, 2)));
                 if(dis <= pointR){
-                    isExist = true;
-                    console.log('isExist is true')
+                    currentKey = circleArr[i].key;
                     break;
                 }
                 
             }
-            if(isExist){
-                canvas.style.cursor = 'pointer';
-                console.log('curosr: pointer');
+            if(currentKey){
+                canvas.style.cursor = 'pointer';                
             }else{
-                canvas.style.cursor = 'default';
-                console.log('curosr: default');
+                canvas.style.cursor = 'default';                
             }
+            canvas.setAttribute('data-current', currentKey);
 
         }, false);
         
