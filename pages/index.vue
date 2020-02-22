@@ -57,9 +57,9 @@
 		<em class="border_l"></em><em class="border_bl"></em>
 		<em class="border_r"></em><em class="border_br"></em>
       <div class="tit_box">
-        <span class="t_l dot"></span><i class="t_c">红黄灯情况</i><span class="com_more" @click="doShowMore('visitList', '年度信访总量-来访')">更多</span><span class="t_r"></span>
+        <span class="t_l dot"></span><i class="t_c">红黄灯情况</i><span class="com_more" @click="doShowMore('hotRight3', '年度信访总量-来访')">更多</span><span class="t_r"></span>
       </div>
-      <div class="con_box clearfix" @dblclick="doShowMore('年度信访总量-来访')" @click="doShowMore('visitList', '年度信访总量-来访')">
+      <div class="con_box clearfix" @dblclick="doShowMore('年度信访总量-来访')" @click="redYellowLightClick">
         <div id="hotRight3" class="show_map"></div>
         <!-- <PopHotRight3></PopHotRight3> -->
         <!--
@@ -141,8 +141,8 @@
         <PopHotLeft3 v-if="more.type === 'hotLeft3'"></PopHotLeft3>
         <PopHotRight1 v-if="more.type === 'hotRight1'"></PopHotRight1>
         <PopHotWordMore v-if="more.type === 'hotWordMore'" :searchType="hotWordMoreSearchType"></PopHotWordMore>
-        <!-- <PopHotRight3 v-if="more.type === 'hotRight3'"></PopHotRight3> -->
-        <PopHotBottom1 v-if="more.type === 'hotBottom1'" @visitListEvent="visitListEvent"></PopHotBottom1>
+        <PopHotRight3 v-if="more.type === 'hotRight3'" @doShowMore="doShowMore"></PopHotRight3>
+        <PopHotBottom1 v-if="more.type === 'hotBottom1'" ></PopHotBottom1>
         <PopHotWordDetail v-if="more.type === 'hotWordDetail'" @doWordCloud="doWordCloud"></PopHotWordDetail>
         <PopVisitList v-if="more.type === 'visitList'"  @visitItemClick="visitItemClick"></PopVisitList>
         <PopVisitDetail v-if="more.type === 'visitDetail'"></PopVisitDetail>
@@ -167,6 +167,7 @@
   import PopHotLeft2 from '~/components/hot/popHotLeft2.vue'
   import PopHotLeft3 from '~/components/hot/popHotLeft3.vue'
   import PopHotRight1 from '~/components/hot/popHotRight1.vue'
+  import PopHotRight3 from '~/components/hot/popHotRight3.vue'
   import PopHotWordMore from '~/components/hot/PopHotWordMore.vue'
   import PopHotBottom1 from '~/components/hot/popHotBottom1.vue'
   import PopHotWordDetail from '~/components/hot/popHotWordDetail.vue'
@@ -183,6 +184,7 @@
       PopHotLeft2,
       PopHotLeft3,
       PopHotRight1,
+      PopHotRight3,
       PopHotWordMore,
       PopHotBottom1,
       PopHotWordDetail,
@@ -244,6 +246,15 @@
 
     // 方法集合
     methods: {
+      // 红黄灯点击事件
+      redYellowLightClick(e){
+        let currentKey = e.currentTarget.getElementsByTagName('canvas')[0].getAttribute('data-current');
+        if(currentKey){
+          this.doShowMore('visitList', '年度信访总量-来访', {
+            currentKey: currentKey
+          });
+        }
+      },
       // 热点词云弹出层-统计条件
       hotWordMoreDoSearch(type){
         this.hotWordMoreSearchType = type;
@@ -532,8 +543,6 @@
       getMyChartList (obj) {
         let self = this;
         obj.on('click', (params) => {
-          console.log('params:');
-          console.log(params);
           if(params.seriesName === '考核五率统计'){
             return;
           }else if(params.seriesName === '全区接入单位人员占比'){
