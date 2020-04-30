@@ -28,7 +28,7 @@
     "gulp": "^4.0.2",
     "gulp-exec": "^3.0.2",
     "gulp-sftp-up4": "^0.1.8",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "node-sass": "^4.13.0",
     "nodemon": "^1.18.9",
     "sass-loader": "^8.0.0"
